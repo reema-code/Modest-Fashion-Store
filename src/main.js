@@ -1,5 +1,3 @@
-import './style.css'
-
 const products = [
   { id: 1, name: 'The Aya Abaya', type: 'Abayas', price: 148, color: 'Sandstone', image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=900&q=85' },
   { id: 2, name: 'Lina Pleated Dress', type: 'Dresses', price: 126, color: 'Oat', image: 'https://images.unsplash.com/photo-1566206091558-7f218b696731?auto=format&fit=crop&w=900&q=85' },
