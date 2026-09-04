@@ -1,70 +1,202 @@
-const products = [
-  { id: 1, name: 'The Aya Abaya', type: 'Abayas', price: 148, color: 'Sandstone', image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=900&q=85' },
-  { id: 2, name: 'Lina Pleated Dress', type: 'Dresses', price: 126, color: 'Oat', image: 'https://images.unsplash.com/photo-1566206091558-7f218b696731?auto=format&fit=crop&w=900&q=85' },
-  { id: 3, name: 'Mira Wide-Leg Set', type: 'Sets', price: 164, color: 'Olive', image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=900&q=85' },
-  { id: 4, name: 'Noor Satin Scarf', type: 'Hijabs', price: 34, color: 'Cocoa', image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=900&q=85' },
-]
+import { announcementBar, header, footer, cartDrawer, cartItemsMarkup } from './components.js'
+import { resolveRoute } from './router.js'
+import { products, findProduct } from './data.js'
+import { formatPrice, cartStore, wishlistStore, qs, qsa } from './utils.js'
 
-const icon = (name) => ({
-  search: '<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>',
-  bag: '<svg viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>',
-  arrow: '<svg viewBox="0 0 24 24"><path d="M5 12h14M14 7l5 5-5 5"/></svg>',
-  heart: '<svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.7-7.5 1.1-1.1a5.5 5.5 0 0 0 0-7.8Z"/></svg>',
-  close: '<svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>'
-})[name]
-
-document.querySelector('#app').innerHTML = `
-  <div class="announcement">Complimentary shipping on orders over $150 <button aria-label="Close announcement">×</button></div>
-  <header>
-    <button class="menu" aria-label="Open menu"><span></span><span></span></button>
-    <a class="logo" href="#">SEREIN<span>®</span></a>
-    <nav><a href="#new">New in</a><a href="#shop">Shop</a><a href="#story">Our story</a></nav>
-    <div class="actions"><button aria-label="Search">${icon('search')}</button><button class="bag-btn" aria-label="Shopping bag">${icon('bag')}<b>0</b></button></div>
-  </header>
-  <main>
-    <section class="hero" id="new">
-      <div class="hero-copy"><p class="eyebrow">The late summer edit · 2026</p><h1>Modest,<br><em>by design.</em></h1><p>Considered silhouettes, natural textures, and quiet confidence — made for the way you move through the world.</p><a class="cta light" href="#shop">Explore the collection ${icon('arrow')}</a></div>
-      <div class="hero-image" role="img" aria-label="Woman in a flowing neutral dress"></div>
-      <span class="vertical-note">SEREIN / COLLECTION 04</span>
-    </section>
-
-    <section class="marquee" aria-label="Brand values"><div>CONSIDERED SILHOUETTES <i>✦</i> NATURAL FABRICS <i>✦</i> MADE TO LAST <i>✦</i> CONSIDERED SILHOUETTES <i>✦</i> NATURAL FABRICS</div></section>
-
-    <section class="featured" id="shop">
-      <div class="section-head"><div><p class="eyebrow">Just arrived</p><h2>New essentials</h2></div><a href="#shop">Shop all pieces ${icon('arrow')}</a></div>
-      <div class="filters"><button class="active">All</button><button>Abayas</button><button>Dresses</button><button>Sets</button><button>Hijabs</button></div>
-      <div class="product-grid">${products.map((p, i) => `
-        <article class="product" data-type="${p.type}">
-          <div class="product-image"><img src="${p.image}" alt="${p.name}" loading="${i ? 'lazy' : 'eager'}"><span>${i < 2 ? 'New' : 'Bestseller'}</span><button class="heart" aria-label="Save ${p.name}">${icon('heart')}</button><button class="quick" data-id="${p.id}">Quick add</button></div>
-          <div class="product-info"><div><h3>${p.name}</h3><p>${p.color}</p></div><strong>$${p.price}</strong></div>
-        </article>`).join('')}</div>
-    </section>
-
-    <section class="manifesto" id="story"><div class="story-image"></div><div class="story-copy"><p class="eyebrow">Our philosophy</p><h2>Clothing should<br><em>feel like you.</em></h2><p>We design with intention — balancing coverage, movement, and a refined ease. Each piece is created to live beyond a season and become part of your story.</p><a class="cta dark" href="#">Discover our story ${icon('arrow')}</a><div class="values"><span>01 <b>Thoughtful coverage</b></span><span>02 <b>Enduring quality</b></span><span>03 <b>Conscious choices</b></span></div></div></section>
-
-    <section class="newsletter"><p class="eyebrow">The Serein letter</p><h2>A quieter kind of inbox.</h2><p>New collections, thoughtful stories, and a little inspiration — delivered occasionally.</p><form><input type="email" required placeholder="Your email address" aria-label="Email address"><button type="submit">Join us ${icon('arrow')}</button></form><small>By subscribing, you agree to our privacy policy.</small></section>
-  </main>
-  <footer><a class="logo" href="#">SEREIN<span>®</span></a><div><h4>Explore</h4><a href="#shop">New arrivals</a><a href="#shop">Abayas</a><a href="#shop">Dresses</a><a href="#shop">Hijabs</a></div><div><h4>Information</h4><a href="#story">Our story</a><a href="#">Shipping & returns</a><a href="#">Size guide</a><a href="#">Contact</a></div><div class="social"><h4>Follow along</h4><a href="#">Instagram ↗</a><a href="#">Pinterest ↗</a></div><p class="copyright">© 2026 Serein Studio &nbsp; Privacy &nbsp; Terms</p></footer>
-  <div class="cart" aria-hidden="true"><div class="cart-top"><h2>Your bag <span>0</span></h2><button class="cart-close" aria-label="Close bag">${icon('close')}</button></div><div class="cart-items"><p class="empty">Your bag is waiting.<br><a href="#shop">Explore the collection</a></p></div><div class="cart-total"><span>Subtotal</span><strong>$0</strong><button>Checkout</button></div></div><div class="overlay"></div>
-  <div class="toast" role="status">Added to your bag</div>
+const app = document.querySelector('#app')
+app.innerHTML = `
+  ${announcementBar()}
+  ${header()}
+  <main id="view"></main>
+  ${footer()}
+  ${cartDrawer()}
 `
 
-let cart = []
-const cartPanel = document.querySelector('.cart'), overlay = document.querySelector('.overlay')
-const updateCart = () => {
-  document.querySelector('.bag-btn b').textContent = cart.length
-  document.querySelector('.cart-top span').textContent = cart.length
-  document.querySelector('.cart-items').innerHTML = cart.length ? cart.map((p, i) => `<div class="cart-item"><img src="${p.image}" alt=""><div><h3>${p.name}</h3><p>${p.color}</p><strong>$${p.price}</strong></div><button data-remove="${i}" aria-label="Remove ${p.name}">×</button></div>`).join('') : '<p class="empty">Your bag is waiting.<br><a href="#shop">Explore the collection</a></p>'
-  document.querySelector('.cart-total strong').textContent = `$${cart.reduce((s,p) => s+p.price, 0)}`
+const view = qs('#view')
+const cartPanel = qs('[data-cart]')
+const overlay = qs('[data-overlay]')
+
+function updateCartUI() {
+  const items = cartStore.get()
+  qsa('[data-cart-count]').forEach((el) => (el.textContent = cartStore.count()))
+  const itemsEl = qs('[data-cart-items]')
+  if (itemsEl) itemsEl.innerHTML = cartItemsMarkup(items)
+  const subtotalEl = qs('[data-cart-subtotal]')
+  if (subtotalEl) subtotalEl.textContent = formatPrice(cartStore.subtotal())
 }
-const toggleCart = (show) => { cartPanel.classList.toggle('open', show); overlay.classList.toggle('open', show); cartPanel.setAttribute('aria-hidden', !show) }
-document.querySelector('.bag-btn').onclick = () => toggleCart(true)
-document.querySelector('.cart-close').onclick = () => toggleCart(false)
-overlay.onclick = () => toggleCart(false)
-document.querySelectorAll('.quick').forEach(btn => btn.onclick = () => { cart.push(products.find(p => p.id === +btn.dataset.id)); updateCart(); const t=document.querySelector('.toast'); t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),1800) })
-document.querySelector('.cart-items').onclick = e => { if (e.target.dataset.remove) { cart.splice(+e.target.dataset.remove,1); updateCart() } }
-document.querySelectorAll('.heart').forEach(btn => btn.onclick = () => btn.classList.toggle('saved'))
-document.querySelectorAll('.filters button').forEach(btn => btn.onclick = () => { document.querySelector('.filters .active').classList.remove('active'); btn.classList.add('active'); document.querySelectorAll('.product').forEach(p => p.hidden = btn.textContent !== 'All' && p.dataset.type !== btn.textContent) })
-document.querySelector('.announcement button').onclick = e => e.target.parentElement.remove()
-document.querySelector('.menu').onclick = () => document.querySelector('header nav').classList.toggle('show')
-document.querySelector('.newsletter form').onsubmit = e => { e.preventDefault(); e.target.innerHTML='<p class="thanks">Welcome to Serein. Thank you for joining us.</p>' }
+
+function toggleCart(show) {
+  cartPanel.classList.toggle('open', show)
+  overlay.classList.toggle('open', show)
+  cartPanel.setAttribute('aria-hidden', String(!show))
+}
+
+function showToast(message) {
+  const toast = qs('[data-toast]')
+  if (!toast) return
+  toast.textContent = message
+  toast.classList.add('show')
+  clearTimeout(showToast._t)
+  showToast._t = setTimeout(() => toast.classList.remove('show'), 2200)
+}
+
+function render() {
+  const { html, scrollTo } = resolveRoute(location.hash)
+  view.innerHTML = html
+  qs('[data-nav]')?.classList.remove('show')
+  initGallery()
+  initSizeGuide()
+  initSort()
+  if (scrollTo) {
+    const target = document.getElementById(scrollTo)
+    if (target) requestAnimationFrame(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }))
+  } else {
+    window.scrollTo(0, 0)
+  }
+  updateCartUI()
+}
+
+function initGallery() {
+  const gallery = qs('[data-gallery]')
+  if (!gallery) return
+  const show = (index) => {
+    qsa('[data-gallery-image]', gallery).forEach((img) => img.classList.toggle('active', img.dataset.index === String(index)))
+    qsa('[data-gallery-thumb]', gallery).forEach((btn) => btn.classList.toggle('active', btn.dataset.galleryThumb === String(index)))
+  }
+  qsa('[data-gallery-thumb]', gallery).forEach((btn) => btn.addEventListener('click', () => show(btn.dataset.galleryThumb)))
+}
+
+function initSizeGuide() {
+  const modal = qs('[data-size-guide-modal]')
+  const modalOverlay = qs('[data-size-guide-overlay]')
+  if (!modal) return
+  const open = () => { modal.classList.add('open'); modalOverlay.classList.add('open'); modal.setAttribute('aria-hidden', 'false') }
+  const close = () => { modal.classList.remove('open'); modalOverlay.classList.remove('open'); modal.setAttribute('aria-hidden', 'true') }
+  qs('[data-open-size-guide]')?.addEventListener('click', open)
+  qs('[data-close-size-guide]')?.addEventListener('click', close)
+  modalOverlay?.addEventListener('click', close)
+}
+
+function initSort() {
+  const bar = qs('[data-sort]')
+  const grid = qs('[data-collection-grid]')
+  if (!bar || !grid) return
+  bar.addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-sort-value]')
+    if (!btn) return
+    qsa('button', bar).forEach((b) => b.classList.remove('active'))
+    btn.classList.add('active')
+    const cards = qsa('.product', grid)
+    const priceOf = (card) => Number(card.querySelector('strong').textContent.replace(/[^\d]/g, ''))
+    const sorted = cards.slice().sort((a, b) => {
+      if (btn.dataset.sortValue === 'price-asc') return priceOf(a) - priceOf(b)
+      if (btn.dataset.sortValue === 'price-desc') return priceOf(b) - priceOf(a)
+      return 0
+    })
+    if (btn.dataset.sortValue === 'default') return
+    sorted.forEach((card) => grid.appendChild(card))
+  })
+}
+
+// Global event delegation — survives every re-render since it's bound once on document/app shell.
+document.addEventListener('click', (e) => {
+  const announcementClose = e.target.closest('.announcement-close')
+  if (announcementClose) { announcementClose.closest('.announcement').remove(); return }
+
+  const menuToggle = e.target.closest('.menu-toggle')
+  if (menuToggle) {
+    const nav = qs('[data-nav]')
+    const open = nav.classList.toggle('show')
+    menuToggle.setAttribute('aria-expanded', String(open))
+    return
+  }
+
+  if (e.target.closest('.bag-btn')) { toggleCart(true); return }
+  if (e.target.closest('.cart-close') || e.target === overlay) { toggleCart(false); return }
+
+  const removeBtn = e.target.closest('[data-remove]')
+  if (removeBtn) { cartStore.removeAt(Number(removeBtn.dataset.remove)); updateCartUI(); return }
+
+  const qtyBtn = e.target.closest('.qty-minus, .qty-plus')
+  if (qtyBtn) {
+    const stepper = qtyBtn.closest('[data-qty-index]')
+    const index = Number(stepper.dataset.qtyIndex)
+    const items = cartStore.get()
+    const current = items[index]?.qty || 1
+    cartStore.setQty(index, qtyBtn.classList.contains('qty-plus') ? current + 1 : current - 1)
+    updateCartUI()
+    return
+  }
+
+  const heart = e.target.closest('[data-wish]')
+  if (heart) {
+    wishlistStore.toggle(Number(heart.dataset.wish))
+    heart.classList.toggle('saved')
+    return
+  }
+
+  const quick = e.target.closest('[data-quick]')
+  if (quick) {
+    const product = products.find((p) => p.id === Number(quick.dataset.quick))
+    if (product) { cartStore.add(product); updateCartUI(); showToast(`Added ${product.name} to your bag`) }
+    return
+  }
+
+  const colorSwatch = e.target.closest('[data-color]')
+  if (colorSwatch) {
+    const group = colorSwatch.closest('[data-colors]')
+    qsa('.swatch', group).forEach((s) => s.classList.remove('active'))
+    colorSwatch.classList.add('active')
+    const label = qs('[data-color-label]')
+    if (label) label.textContent = colorSwatch.dataset.color
+    return
+  }
+
+  const sizeBtn = e.target.closest('[data-size]')
+  if (sizeBtn) {
+    const group = sizeBtn.closest('[data-sizes]')
+    qsa('.size-btn', group).forEach((s) => s.classList.remove('active'))
+    sizeBtn.classList.add('active')
+    return
+  }
+
+  const addToBag = e.target.closest('[data-add-to-bag]')
+  if (addToBag) {
+    const product = productFromPanel(addToBag)
+    if (product) { cartStore.add(product, selectedOptions()); updateCartUI(); showToast(`Added ${product.name} to your bag`); toggleCart(true) }
+    return
+  }
+
+  const buyNow = e.target.closest('[data-buy-now]')
+  if (buyNow) {
+    const product = productFromPanel(buyNow)
+    if (product) { cartStore.add(product, selectedOptions()); updateCartUI(); toggleCart(true) }
+    return
+  }
+
+  if (e.target.closest('.checkout-btn')) {
+    showToast('This is a demo storefront — checkout is not connected.')
+    return
+  }
+})
+
+document.addEventListener('submit', (e) => {
+  if (e.target.matches('[data-newsletter]')) {
+    e.preventDefault()
+    e.target.innerHTML = '<p class="thanks">Welcome to Serein. Thank you for joining us.</p>'
+  }
+})
+
+function productFromPanel(el) {
+  const slug = el.closest('[data-product-slug]')?.dataset.productSlug
+  return slug ? findProduct(slug) : null
+}
+
+function selectedOptions() {
+  const color = qs('[data-color-label]')?.textContent
+  const sizeBtn = qs('.size-btn.active')
+  return { color, size: sizeBtn?.dataset.size }
+}
+
+window.addEventListener('hashchange', render)
+render()
