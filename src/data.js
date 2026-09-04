@@ -1,6 +1,7 @@
-// Image helper — builds an Unsplash delivery URL with consistent crop/quality.
-export const img = (id, { w = 1200, h, crop, q = 80 } = {}) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}${h ? `&h=${h}` : ''}${crop ? `&crop=${crop}` : ''}&q=${q}`
+// Image helper — placeholder photography until real product photos are ready.
+// TODO: replace with real client photos, same as every other slot on this site.
+export const img = (id, { w = 1200, h = w, crop } = {}) =>
+  `https://picsum.photos/seed/${encodeURIComponent(`${id}-${crop || ''}-${h}`)}/${w}/${h}`
 
 export const CURRENCY = 'AED'
 
