@@ -1,6 +1,6 @@
 import { CURRENCY } from './data.js'
 
-export const formatPrice = (n) => `${CURRENCY} ${n.toLocaleString('en-AE')}`
+export const formatPrice = (n) => `${n.toLocaleString('ar-AE')} ${CURRENCY}`
 
 export const icon = (name) => ({
   search: '<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>',

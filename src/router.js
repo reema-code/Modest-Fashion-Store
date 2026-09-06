@@ -6,8 +6,8 @@ import { sizeGuidePage, shippingReturnsPage, contactPage } from './pages/static.
 const notFound = () => `
   <section class="page-header center">
     <p class="eyebrow">404</p>
-    <h1>We couldn't find that page</h1>
-    <p><a class="cta dark" href="#/">Return home</a></p>
+    <h1>لم نعثر على هذه الصفحة</h1>
+    <p><a class="cta dark" href="#/">العودة إلى الرئيسية</a></p>
   </section>`
 
 export function resolveRoute(hash) {

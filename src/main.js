@@ -16,6 +16,10 @@ const view = qs('#view')
 const cartPanel = qs('[data-cart]')
 const overlay = qs('[data-overlay]')
 
+const loader = qs('[data-page-loader]')
+requestAnimationFrame(() => requestAnimationFrame(() => loader?.classList.add('is-ready')))
+setTimeout(() => loader?.remove(), 650)
+
 function updateCartUI() {
   const items = cartStore.get()
   qsa('[data-cart-count]').forEach((el) => (el.textContent = cartStore.count()))
@@ -138,7 +142,7 @@ document.addEventListener('click', (e) => {
   const quick = e.target.closest('[data-quick]')
   if (quick) {
     const product = products.find((p) => p.id === Number(quick.dataset.quick))
-    if (product) { cartStore.add(product); updateCartUI(); showToast(`Added ${product.name} to your bag`) }
+    if (product) { cartStore.add(product); updateCartUI(); showToast(`أضفنا ${product.name} إلى حقيبتكِ`) }
     return
   }
 
@@ -163,7 +167,7 @@ document.addEventListener('click', (e) => {
   const addToBag = e.target.closest('[data-add-to-bag]')
   if (addToBag) {
     const product = productFromPanel(addToBag)
-    if (product) { cartStore.add(product, selectedOptions()); updateCartUI(); showToast(`Added ${product.name} to your bag`); toggleCart(true) }
+    if (product) { cartStore.add(product, selectedOptions()); updateCartUI(); showToast(`أضفنا ${product.name} إلى حقيبتكِ`); toggleCart(true) }
     return
   }
 
@@ -175,7 +179,7 @@ document.addEventListener('click', (e) => {
   }
 
   if (e.target.closest('.checkout-btn')) {
-    showToast('This is a demo storefront — checkout is not connected.')
+    showToast('هذه نسخة تجريبية — الدفع غير متاح حالياً.')
     return
   }
 })
@@ -183,7 +187,7 @@ document.addEventListener('click', (e) => {
 document.addEventListener('submit', (e) => {
   if (e.target.matches('[data-newsletter]')) {
     e.preventDefault()
-    e.target.innerHTML = '<p class="thanks">Welcome to Serein. Thank you for joining us.</p>'
+    e.target.innerHTML = '<p class="thanks">أهلاً بكِ في سيرين، يسعدنا انضمامكِ إلينا.</p>'
   }
 })
 
