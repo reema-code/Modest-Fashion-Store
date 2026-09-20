@@ -2,18 +2,18 @@
 
 /* ---------- Design tokens ---------- */
 :root{
-  --ivory:#f6f2ea;
-  --paper:#fbf9f5;
-  --sand:#e4d7c2;
-  --stone:#cdbfa8;
-  --taupe:#a9927a;
-  --camel:#b2854f;
-  --charcoal:#211f1b;
-  --ink:#211f1b;
-  --ink-soft:#5b564c;
-  --line:rgba(33,31,27,.14);
-  --accent:#6d2331;
-  --accent-soft:#8a3a46;
+  --ivory:#f8f4ec;
+  --paper:#fffdf9;
+  --sand:#e9dcc7;
+  --stone:#d0c2a8;
+  --taupe:#a68e72;
+  --camel:#b8875a;
+  --charcoal:#1c1a16;
+  --ink:#1c1a16;
+  --ink-soft:#5a5346;
+  --line:rgba(28,26,22,.13);
+  --accent:#7a2334;
+  --accent-soft:#9c4152;
   --serif:'Fraunces',Georgia,'Times New Roman',serif;
   --sans:'Manrope',-apple-system,BlinkMacSystemFont,sans-serif;
   --radius:2px;
