@@ -82,7 +82,8 @@ export const cartItemsMarkup = (items) => items.length
       <img src="${p.image}" alt="${p.name}">
       <div class="cart-item-info">
         <h3><a href="#/product/${p.slug}">${p.name}</a></h3>
-        <p>${p.color} &middot; Size ${p.size}</p>
+        <p>${p.color} &middot; ${p.size?.startsWith('Custom') ? p.size : `Size ${p.size}`}</p>
+        ${p.notes ? `<p class="cart-item-notes">“${p.notes}”</p>` : ''}
         <div class="qty-stepper" data-qty-index="${i}">
           <button class="qty-minus" aria-label="Decrease quantity">${icon('minus')}</button>
           <span>${p.qty}</span>

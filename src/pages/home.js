@@ -5,6 +5,15 @@ import { productCard } from './product-card.js'
 const byBadge = (badge, n) => products.filter((p) => p.badge === badge).slice(0, n)
 // Avoids picking a product already shown elsewhere on the homepage (e.g. the Bestseller).
 const byCollection = (slug, n) => products.filter((p) => p.collection === slug && p.badge !== 'Bestseller').slice(0, n)
+const newArrivals = [...byCollection('workwear', 2), ...byCollection('abayas', 2)]
+// Best sellers: the actual Bestseller item first, then more pieces not already shown above.
+const bestSellers = () => {
+  const shownIds = new Set(newArrivals.map((p) => p.id))
+  const rest = (slug) => products.filter((p) => p.collection === slug && !shownIds.has(p.id))
+  return [...byBadge('Bestseller', 4), ...rest('workwear'), ...rest('abayas')]
+    .filter((p, i, arr) => arr.findIndex((x) => x.id === p.id) === i)
+    .slice(0, 4)
+}
 
 const featureSection = (opts) => `
   <section class="feature-split ${opts.reverse ? 'reverse' : ''}" style="--feature-image:url('${opts.image}')">
@@ -37,7 +46,7 @@ export const homePage = () => `
       <div><p class="eyebrow">Just arrived</p><h2>New arrivals</h2></div>
       <a href="#/collections">Shop all pieces ${icon('arrow')}</a>
     </div>
-    <div class="product-grid">${[...byCollection('workwear', 2), ...byCollection('abayas', 2)].map(productCard).join('')}</div>
+    <div class="product-grid">${newArrivals.map(productCard).join('')}</div>
   </section>
 
   <section class="collection-grid-section">
@@ -70,7 +79,7 @@ export const homePage = () => `
       <div><p class="eyebrow">Loved by our community</p><h2>Best sellers</h2></div>
       <a href="#/collections">Shop all pieces ${icon('arrow')}</a>
     </div>
-    <div class="product-grid">${byBadge('Bestseller', 4).map(productCard).join('')}</div>
+    <div class="product-grid">${bestSellers().map(productCard).join('')}</div>
   </section>
 
   ${featureSection({

@@ -29,13 +29,13 @@ const write = (key, value) => {
 export const cartStore = {
   get: () => read(CART_KEY),
   set: (items) => write(CART_KEY, items),
-  add(product, { size, color, qty = 1 } = {}) {
+  add(product, { size, color, notes, qty = 1 } = {}) {
     const items = read(CART_KEY)
     const chosenSize = size || product.sizes[2]
     const chosenColor = color || product.colors[0]
     const existing = items.find((i) => i.id === product.id && i.size === chosenSize && i.color === chosenColor)
     if (existing) existing.qty += qty
-    else items.push({ id: product.id, name: product.name, price: product.price, image: product.thumb, slug: product.slug, size: chosenSize, color: chosenColor, qty })
+    else items.push({ id: product.id, name: product.name, price: product.price, image: product.thumb, slug: product.slug, size: chosenSize, color: chosenColor, notes: notes || '', qty })
     write(CART_KEY, items)
     return items
   },

@@ -160,6 +160,16 @@ document.addEventListener('click', (e) => {
     return
   }
 
+  const sizeTab = e.target.closest('[data-size-tab]')
+  if (sizeTab) {
+    const tabs = sizeTab.closest('[data-size-tabs]')
+    const panel = sizeTab.closest('.option-group')
+    qsa('.size-tab', tabs).forEach((t) => t.classList.remove('active'))
+    sizeTab.classList.add('active')
+    qsa('[data-size-panel]', panel).forEach((p) => { p.hidden = p.dataset.sizePanel !== sizeTab.dataset.sizeTab })
+    return
+  }
+
   const addToBag = e.target.closest('[data-add-to-bag]')
   if (addToBag) {
     const product = productFromPanel(addToBag)
@@ -194,6 +204,17 @@ function productFromPanel(el) {
 
 function selectedOptions() {
   const color = qs('[data-color-label]')?.textContent
+  const customTab = qs('.size-tab.active[data-size-tab="custom"]')
+  if (customTab) {
+    const panel = qs('[data-size-panel="custom"]')
+    const val = (key) => qs(`[data-measure="${key}"]`, panel)?.value.trim()
+    const parts = ['length', 'bust', 'shoulder', 'sleeve']
+      .map((key) => ({ key, val: val(key) }))
+      .filter((m) => m.val)
+      .map((m) => `${m.key[0].toUpperCase()}${m.val}`)
+    const notes = val('notes')
+    return { color, size: parts.length ? `Custom (${parts.join(' ')})` : 'Custom', notes }
+  }
   const sizeBtn = qs('.size-btn.active')
   return { color, size: sizeBtn?.dataset.size }
 }

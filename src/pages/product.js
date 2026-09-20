@@ -9,6 +9,7 @@ export const productPage = (slug) => {
   const collection = collections.find((c) => c.slug === product.collection)
   const related = relatedTo(product)
   const views = product.views || product.images.map((_, i) => VIEWS[i] || `View ${i + 1}`)
+  const isMokhawar = product.collection === 'workwear'
 
   return `
     <section class="product-detail">
@@ -40,9 +41,25 @@ export const productPage = (slug) => {
               <label>Size</label>
               <button class="size-guide-link" data-open-size-guide>Size guide</button>
             </div>
-            <div class="size-grid" data-sizes>
+            ${isMokhawar ? `
+            <div class="size-tabs" data-size-tabs>
+              <button class="size-tab active" data-size-tab="ready" type="button">Ready sizes</button>
+              <button class="size-tab" data-size-tab="custom" type="button">Custom to my measurements</button>
+            </div>` : ''}
+            <div class="size-grid" data-sizes data-size-panel="ready">
               ${product.sizes.map((s, i) => `<button class="size-btn ${i === 2 ? 'active' : ''}" data-size="${s}">${s}</button>`).join('')}
             </div>
+            ${isMokhawar ? `
+            <div class="custom-size" data-size-panel="custom" hidden>
+              <div class="custom-size-grid">
+                <label>Length (cm)<input type="number" inputmode="decimal" data-measure="length" placeholder="e.g. 142"></label>
+                <label>Bust (cm)<input type="number" inputmode="decimal" data-measure="bust" placeholder="e.g. 92"></label>
+                <label>Shoulder (cm)<input type="number" inputmode="decimal" data-measure="shoulder" placeholder="e.g. 39"></label>
+                <label>Sleeve (cm)<input type="number" inputmode="decimal" data-measure="sleeve" placeholder="e.g. 58"></label>
+              </div>
+              <label class="custom-size-note">Notes for our tailor (optional)<textarea data-measure="notes" rows="2" placeholder="e.g. I'd like the length a little longer"></textarea></label>
+              <p class="custom-size-hint">${icon('check')} Made to your measurements — please allow 2–3 extra days to prepare this piece.</p>
+            </div>` : ''}
           </div>
 
           <div class="buy-actions" data-product-slug="${product.slug}">
