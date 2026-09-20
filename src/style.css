@@ -500,3 +500,16 @@ body{background:#fff;color:#111}
  .site-header .main-nav{background:var(--brand-burgundy);color:#fff}
  .site-header .nav-drop a{border-bottom-color:rgba(255,255,255,.2)}
 }
+
+/* Compact header */
+.announcement{min-height:28px;padding:5px 40px;font-size:12px;line-height:18px}
+.announcement-close{top:3px}
+.site-header{height:64px}
+.site-header>.logo{font-size:28px}
+#story{scroll-margin-top:64px}
+@media(max-width:800px){
+ .site-header{height:56px}
+ .site-header>.logo{font-size:24px}
+ .main-nav{top:56px}
+ #story{scroll-margin-top:56px}
+}
