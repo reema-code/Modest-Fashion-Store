@@ -465,3 +465,38 @@ body{font-size:16px}
 .footer-col h4{color:#d8bd83}
 .footer-bottom{border-top-color:#d8bd8340}
 .coming-soon .cta.light{border-color:#d8bd83;color:#fffaf0}
+
+/* Approved palette: monochrome storefront, dark burgundy header and footer. */
+:root{
+ --ivory:#fff;--paper:#fff;--sand:#f4f4f4;--stone:#d4d4d4;
+ --taupe:#737373;--camel:#555;--charcoal:#111;--ink:#111;
+ --ink-soft:#626262;--line:rgba(0,0,0,.15);--accent:#222;
+ --accent-soft:#444;--gold:#ddd;--brand-burgundy:#390d1b;
+}
+body{background:#fff;color:#111}
+.announcement,.site-header,.site-footer{background:var(--brand-burgundy);color:#fff}
+.announcement-close{color:#fff}
+.site-header{border-bottom-color:rgba(255,255,255,.2)}
+.site-header>.logo,.site-header .main-nav,.site-header .actions{color:#fff}
+.nav-drop a:after{border-bottom-color:currentColor}
+.menu-toggle span{border-top-color:#fff}
+.actions button:hover{background:rgba(255,255,255,.12)}
+.bag-btn b{background:#fff;color:var(--brand-burgundy)}
+.brand-hero h1 em,.brand-story h2 em{color:#111}
+.brand-hero-photo{background:#eee}
+.brand-hero-photo span{background:rgba(0,0,0,.5)}
+.abaya-panel,.brand-story,.collection-heading{background:#f5f5f5;color:#111}
+.mkhawar-panel,.coming-soon{background:#111;color:#fff;border-color:#333}
+.mkhawar-panel .eyebrow,.coming-soon .eyebrow{color:#ddd}
+.mkhawar-panel .arabic-label,.coming-soon .arabic-label{color:#fff}
+.mkhawar-panel .text-link{border-bottom-color:#fff}
+.cta.dark{background:#111;color:#fff;border-color:#111}
+.cta.dark:hover{background:#333;border-color:#333}
+.coming-soon .cta.light{border-color:#fff;color:#fff}
+.footer-brand .logo,.footer-col h4{color:#fff}
+.footer-brand p,.footer-col a,.footer-col p,.footer-bottom{color:#eee}
+.footer-bottom{border-top-color:rgba(255,255,255,.2)}
+@media(max-width:800px){
+ .site-header .main-nav{background:var(--brand-burgundy);color:#fff}
+ .site-header .nav-drop a{border-bottom-color:rgba(255,255,255,.2)}
+}
