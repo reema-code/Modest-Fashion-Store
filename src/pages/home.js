@@ -3,6 +3,7 @@ import { icon, formatPrice } from '../utils.js'
 import { productCard } from './product-card.js'
 
 const byBadge = (badge, n) => products.filter((p) => p.badge === badge).slice(0, n)
+const byCollection = (slug, n) => products.filter((p) => p.collection === slug).slice(0, n)
 
 const featureSection = (opts) => `
   <section class="feature-split ${opts.reverse ? 'reverse' : ''}" style="--feature-image:url('${opts.image}')">
@@ -35,7 +36,7 @@ export const homePage = () => `
       <div><p class="eyebrow">Just arrived</p><h2>New arrivals</h2></div>
       <a href="#/collections">Shop all pieces ${icon('arrow')}</a>
     </div>
-    <div class="product-grid">${byBadge('New', 4).map(productCard).join('')}</div>
+    <div class="product-grid">${[...byCollection('workwear', 2), ...byCollection('abayas', 2)].map(productCard).join('')}</div>
   </section>
 
   <section class="collection-grid-section">
