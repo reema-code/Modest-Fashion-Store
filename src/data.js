@@ -11,8 +11,8 @@ export const collections = [
   {
     slug: 'workwear',
     name: 'Mokhawar',
-    tagline: 'Printed kaftans for everyday ease',
-    description: 'Vivid printed kaftans in fluid, opaque fabric — considered pieces for the way you actually live.',
+    tagline: 'Printed Mokhawar pieces for everyday ease',
+    description: 'Vivid printed Mokhawar pieces in fluid, opaque fabric — considered pieces for the way you actually live.',
     cover: '/public/images/workwear/workwear-4-front.webp',
     fabric: 'Satin-finish viscose, fully opaque',
     fit: 'Relaxed, floor-length silhouette with a full sleeve',
@@ -32,7 +32,7 @@ export const collections = [
     slug: 'underdress',
     name: 'Abaya Underdress',
     tagline: 'The slip dress worn beneath',
-    description: 'Simple, opaque slip dresses made to wear under an abaya or kaftan — quiet layers that finish the look.',
+    description: 'Simple, opaque slip dresses made to wear under an abaya or Mokhawar piece — quiet layers that finish the look.',
     cover: '/public/images/abayas/abaya-6.webp',
     fabric: 'Brushed satin or jersey, fully opaque',
     fit: 'Relaxed column silhouette, floor length',
@@ -57,16 +57,16 @@ const W = (n) => `/public/images/workwear/workwear-${n}.webp`
 // actually have of that same piece, so nothing is duplicated across products.
 const raw = [
   // Mokhawar / Workwear
-  { name: 'Zahra Palm Print Kaftan', collection: 'workwear', price: 480, colors: ['Teal'], photos: [W(1)], badge: 'New',
-    description: 'A vivid teal kaftan in a palm and archway print, finished with hand-beaded embroidery at the neckline and lace-trimmed cuffs.' },
-  { name: 'Layan Paisley Beaded Kaftan', collection: 'workwear', price: 520, colors: ['Green'], photos: ['/public/images/workwear/workwear-2-front.webp', '/public/images/workwear/workwear-2-cuff.webp', W(2)], views: ['Front', 'Cuff Detail', 'Neckline Detail'], badge: 'New',
-    description: 'A green swirl-print kaftan with a hand-beaded paisley yoke in green and silver, finished with a fringed beadwork trim at the neckline and cuffs.' },
-  { name: 'Samar Tie-Dye Beaded Kaftan', collection: 'workwear', price: 540, colors: ['Sunset'], photos: ['/public/images/workwear/workwear-3-front.webp', '/public/images/workwear/workwear-3-cuff.webp', W(3)], views: ['Front', 'Cuff Detail', 'Neckline Detail'], badge: '',
-    description: 'A sunset tie-dye kaftan in fluid satin, with a hand-beaded scalloped neckline and matching cuffs finished in crystal trim.' },
-  { name: 'Marina Seahorse Beaded Kaftan', collection: 'workwear', price: 550, colors: ['Turquoise'], photos: ['/public/images/workwear/workwear-4-front.webp', '/public/images/workwear/workwear-4-cuff.webp', W(4)], views: ['Front', 'Cuff Detail', 'Neckline Detail'], badge: 'New',
-    description: 'A turquoise kaftan in a seahorse and starfish print, with a fully hand-beaded yoke embroidered to match the underwater motif.' },
-  { name: 'Nadia Wave Beaded Kaftan', collection: 'workwear', price: 560, colors: ['Sky Blue'], photos: [W(5)], views: ['Detail'], badge: '',
-    description: 'A sky-blue swirl-print kaftan with a hand-beaded wave-pattern yoke in silver and pale blue, finished with a fringed hem trim.' },
+  { name: 'Zahra Palm Print Mokhawar', collection: 'workwear', price: 480, colors: ['Teal'], photos: [W(1)], badge: 'New',
+    description: 'A vivid teal Mokhawar piece in a palm and archway print, finished with hand-beaded embroidery at the neckline and lace-trimmed cuffs.' },
+  { name: 'Layan Paisley Beaded Mokhawar', collection: 'workwear', price: 520, colors: ['Green'], photos: ['/public/images/workwear/workwear-2-front.webp', '/public/images/workwear/workwear-2-cuff.webp', W(2)], views: ['Front', 'Cuff Detail', 'Neckline Detail'], badge: 'New',
+    description: 'A green swirl-print Mokhawar piece with a hand-beaded paisley yoke in green and silver, finished with a fringed beadwork trim at the neckline and cuffs.' },
+  { name: 'Samar Tie-Dye Beaded Mokhawar', collection: 'workwear', price: 540, colors: ['Sunset'], photos: ['/public/images/workwear/workwear-3-front.webp', '/public/images/workwear/workwear-3-cuff.webp', W(3)], views: ['Front', 'Cuff Detail', 'Neckline Detail'], badge: '',
+    description: 'A sunset tie-dye Mokhawar piece in fluid satin, with a hand-beaded scalloped neckline and matching cuffs finished in crystal trim.' },
+  { name: 'Marina Seahorse Beaded Mokhawar', collection: 'workwear', price: 550, colors: ['Turquoise'], photos: ['/public/images/workwear/workwear-4-front.webp', '/public/images/workwear/workwear-4-cuff.webp', W(4)], views: ['Front', 'Cuff Detail', 'Neckline Detail'], badge: 'New',
+    description: 'A turquoise Mokhawar piece in a seahorse and starfish print, with a fully hand-beaded yoke embroidered to match the underwater motif.' },
+  { name: 'Nadia Wave Beaded Mokhawar', collection: 'workwear', price: 560, colors: ['Sky Blue'], photos: [W(5)], views: ['Detail'], badge: '',
+    description: 'A sky-blue swirl-print Mokhawar piece with a hand-beaded wave-pattern yoke in silver and pale blue, finished with a fringed hem trim.' },
 
   // Abayas
   { name: 'Elara Navy Jacquard Abaya', collection: 'abayas', price: 720, colors: ['Navy'], photos: [A(1)], badge: 'New',

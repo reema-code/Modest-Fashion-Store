@@ -75,10 +75,10 @@ export const homePage = () => `
 
   ${featureSection({
     eyebrow: 'Mokhawar',
-    title: 'Printed kaftans, made for everyday.',
+    title: 'Printed Mokhawar, made for everyday.',
     body: 'Vivid prints in fluid, opaque fabric with hand-finished detail — our Mokhawar edit is built for warm days and easy movement.',
     image: img('/public/images/workwear/workwear-3-cuff.webp'),
-    alt: 'Close-up of beaded cuff embroidery on a printed kaftan',
+    alt: 'Close-up of beaded cuff embroidery on a printed Mokhawar piece',
     slug: 'workwear', name: 'Mokhawar',
   })}
 
