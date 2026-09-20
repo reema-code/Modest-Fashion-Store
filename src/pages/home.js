@@ -72,6 +72,15 @@ export const homePage = () => `
   </section>
 
   ${featureSection({
+    eyebrow: 'Mokhawar',
+    title: 'Printed kaftans, made for everyday.',
+    body: 'Vivid prints in fluid, opaque fabric with hand-finished detail — our Mokhawar edit is built for warm days and easy movement.',
+    image: img('/public/images/workwear/workwear-1.webp'),
+    alt: 'Woman in a printed teal kaftan',
+    slug: 'workwear', name: 'Mokhawar',
+  })}
+
+  ${featureSection({
     eyebrow: 'Abayas',
     title: 'Fluid silhouettes, engineered drape.',
     body: 'Opaque crepe, considered detail, and a fall that moves with intention — our abaya edit is built to be lived in, not just worn.',

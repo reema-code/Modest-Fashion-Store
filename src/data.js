@@ -9,6 +9,16 @@ export const CURRENCY = 'AED'
 
 export const collections = [
   {
+    slug: 'workwear',
+    name: 'Mokhawar',
+    tagline: 'Printed kaftans for everyday ease',
+    description: 'Vivid printed kaftans in fluid, opaque fabric — considered pieces for the way you actually live.',
+    cover: '/public/images/workwear/workwear-1.webp',
+    fabric: 'Satin-finish viscose, fully opaque',
+    fit: 'Relaxed, floor-length silhouette with a full sleeve',
+    care: 'Dry clean recommended. Steam between wears.',
+  },
+  {
     slug: 'abayas',
     name: 'Abaya Dress',
     tagline: 'Fluid silhouettes, engineered drape',
@@ -31,10 +41,15 @@ export const sizeGuide = [
 ]
 
 const A = (n) => `/public/images/abayas/abaya-${n}.webp`
+const W = (n) => `/public/images/workwear/workwear-${n}.webp`
 
 // Each entry is one real, distinct garment — `photos` lists every angle we
-// actually have of that same abaya, so nothing is duplicated across products.
+// actually have of that same piece, so nothing is duplicated across products.
 const raw = [
+  // Mokhawar / Workwear
+  { name: 'Zahra Palm Print Kaftan', collection: 'workwear', price: 480, colors: ['Teal'], photos: [W(1)], badge: 'New',
+    description: 'A vivid teal kaftan in a palm and archway print, finished with hand-beaded embroidery at the neckline and lace-trimmed cuffs.' },
+
   // Abayas
   { name: 'Elara Navy Jacquard Abaya', collection: 'abayas', price: 720, colors: ['Navy'], photos: [A(1)], badge: 'New',
     description: 'An open-front abaya in a subtle navy floral jacquard, finished with a self-tie belt and a soft, floor-skimming fall.' },
