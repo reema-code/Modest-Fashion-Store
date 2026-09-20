@@ -40,14 +40,14 @@ export const collections = [
   },
 ]
 
-export const SIZES = ['XS', 'S', 'M', 'L', 'XL']
+export const SIZES = ['52', '54', '56', '58', '60']
 
 export const sizeGuide = [
-  { size: 'XS', bust: '80–84', waist: '62–66', hip: '88–92' },
-  { size: 'S', bust: '85–89', waist: '67–71', hip: '93–97' },
-  { size: 'M', bust: '90–94', waist: '72–76', hip: '98–102' },
-  { size: 'L', bust: '95–100', waist: '77–82', hip: '103–108' },
-  { size: 'XL', bust: '101–107', waist: '83–89', hip: '109–115' },
+  { size: '52', bust: '88–92', waist: '70–74', hip: '96–100' },
+  { size: '54', bust: '93–97', waist: '75–79', hip: '101–105' },
+  { size: '56', bust: '98–102', waist: '80–84', hip: '106–110' },
+  { size: '58', bust: '103–107', waist: '85–89', hip: '111–115' },
+  { size: '60', bust: '108–112', waist: '90–94', hip: '116–120' },
 ]
 
 const A = (n) => `/public/images/abayas/abaya-${n}.webp`
