@@ -1,4 +1,4 @@
-import { findProduct, relatedTo, sizeGuide, collections } from '../data.js'
+import { findProduct, relatedTo, sizeGuide, collections, VIEWS } from '../data.js'
 import { icon, formatPrice } from '../utils.js'
 import { productCard } from './product-card.js'
 import { breadcrumbs } from '../components.js'
@@ -8,7 +8,7 @@ export const productPage = (slug) => {
   if (!product) return null
   const collection = collections.find((c) => c.slug === product.collection)
   const related = relatedTo(product)
-  const views = ['Front', 'Styled', 'Detail']
+  const views = product.images.map((_, i) => VIEWS[i] || `View ${i + 1}`)
 
   return `
     <section class="product-detail">

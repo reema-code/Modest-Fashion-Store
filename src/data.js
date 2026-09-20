@@ -30,25 +30,23 @@ export const sizeGuide = [
   { size: 'XL', bust: '101–107', waist: '83–89', hip: '109–115' },
 ]
 
+const A = (n) => `/public/images/abayas/abaya-${n}.webp`
+
+// Each entry is one real, distinct garment — `photos` lists every angle we
+// actually have of that same abaya, so nothing is duplicated across products.
 const raw = [
   // Abayas
-  { name: 'The Sahara Abaya', collection: 'abayas', price: 640, colors: ['Navy'], image: '/public/images/abayas/abaya-1.webp', styled: '/public/images/abayas/abaya-2.webp', badge: 'Bestseller',
-    description: 'A closed-front abaya cut from fluid nida crepe with a fitted shoulder and a soft, floor-skimming fall. Finished with a self-tie belt to define the waist.' },
-  { name: 'Noor Embroidered Abaya', collection: 'abayas', price: 780, colors: ['Espresso'], image: '/public/images/abayas/abaya-2.webp', styled: '/public/images/abayas/abaya-3.webp', badge: 'New',
-    description: 'Hand-finished floral embroidery traces the cuffs and front placket of this closed abaya, cut for a clean, considered silhouette.' },
-  { name: 'Layla Open Abaya', collection: 'abayas', price: 690, colors: ['Espresso'], image: '/public/images/abayas/abaya-3.webp', styled: '/public/images/abayas/abaya-4.webp', badge: '',
-    description: 'An open-front abaya designed to layer over your own pieces, with a matching under-scarf and clean topstitched seams.' },
-  { name: 'Amara Closed Abaya', collection: 'abayas', price: 710, colors: ['Espresso'], image: '/public/images/abayas/abaya-4.webp', styled: '/public/images/abayas/abaya-5.webp', badge: '',
-    description: 'A considered wardrobe staple — brushed crepe with a fitted yoke and gently flared hem for effortless movement.' },
-  { name: 'Rania Lace-Trim Abaya', collection: 'abayas', price: 750, colors: ['Espresso'], image: '/public/images/abayas/abaya-6.webp', styled: '/public/images/abayas/abaya-7.webp', badge: 'New',
-    description: 'A softly printed abaya finished with delicate lace trim at the cuffs and hem, paired with a matching lace-edged scarf for an elevated everyday look.' },
-  { name: 'Yasmin Floral Abaya', collection: 'abayas', price: 820, colors: ['Chocolate'], image: '/public/images/abayas/abaya-7.webp', styled: '/public/images/abayas/abaya-8.webp', badge: '',
-    description: 'An open-front abaya in a subtle tonal floral print, cut from fluid crepe that layers beautifully over our column dresses.' },
-  { name: 'Sofia Pearl-Trim Abaya', collection: 'abayas', price: 730, colors: ['Espresso'], image: '/public/images/abayas/abaya-8.webp', styled: '/public/images/abayas/abaya-9.webp', badge: '',
-    description: 'A closed abaya in a soft dot print, finished with a delicate pearl-trimmed scarf edge for a considered, polished finish.' },
-  { name: 'Elif Pinstripe Abaya', collection: 'abayas', price: 790, colors: ['Espresso'], image: '/public/images/abayas/abaya-9.webp', styled: '/public/images/abayas/abaya-10.webp', badge: '',
-    description: 'A pinstriped abaya banded with hand-finished lace at the waist, tailored for a considered silhouette with a fluid, floor-length fall.' },
+  { name: 'Elara Navy Jacquard Abaya', collection: 'abayas', price: 720, colors: ['Navy'], photos: [A(1)], badge: 'New',
+    description: 'An open-front abaya in a subtle navy floral jacquard, finished with a self-tie belt and a soft, floor-skimming fall.' },
+  { name: 'Noor Floral Abaya', collection: 'abayas', price: 780, colors: ['Chocolate'], photos: [A(2), A(3), A(5), A(7)], badge: 'Bestseller',
+    description: 'A tonal floral-print abaya in fluid chiffon over an opaque lining, with a self-tie waist and a matching floor-length scarf.' },
+  { name: 'Amara Polka-Dot Lace Abaya', collection: 'abayas', price: 750, colors: ['Espresso'], photos: [A(4), A(6), A(8), A(9)], badge: 'New',
+    description: 'A polka-dot abaya finished with delicate lace trim at the cuffs and scarf edge, cut for a clean, considered silhouette.' },
+  { name: 'Elif Pinstripe Lace-Band Abaya', collection: 'abayas', price: 790, colors: ['Espresso'], photos: [A(10)], badge: '',
+    description: 'A pinstriped abaya banded with hand-finished lace at the chest, tailored for a considered silhouette with a fluid, floor-length fall.' },
 ]
+
+export const VIEWS = ['Front', 'Side', 'Detail', 'Styled']
 
 export const products = raw.map((p, i) => {
   const col = collections.find((c) => c.slug === p.collection)
@@ -60,12 +58,8 @@ export const products = raw.map((p, i) => {
     fit: col.fit,
     care: col.care,
     sizes: SIZES,
-    images: [
-      img(p.image, { w: 1100, h: 1400 }),
-      img(p.styled, { w: 1100, h: 1400 }),
-      img(p.image, { w: 1100, h: 1400, crop: 'entropy' }),
-    ],
-    thumb: img(p.image, { w: 900, h: 1150 }),
+    images: p.photos.map((src) => img(src, { w: 1100, h: 1400 })),
+    thumb: img(p.photos[0], { w: 900, h: 1150 }),
   }
 })
 
