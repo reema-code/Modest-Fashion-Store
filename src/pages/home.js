@@ -84,8 +84,8 @@ export const homePage = () => `
     eyebrow: 'Abayas',
     title: 'Fluid silhouettes, engineered drape.',
     body: 'Opaque crepe, considered detail, and a fall that moves with intention — our abaya edit is built to be lived in, not just worn.',
-    image: img('J8HhIB6tKRA', { w: 1100, h: 1350 }),
-    alt: 'Woman in an elegant black abaya', reverse: true,
+    image: img('/public/images/abayas/abaya-5.webp'),
+    alt: 'Woman in an elegant modest abaya', reverse: true,
     slug: 'abayas', name: 'abayas',
   })}
 

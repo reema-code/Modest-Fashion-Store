@@ -1,6 +1,9 @@
 // Image helper — builds an Unsplash delivery URL with consistent crop/quality.
+// A local path (starting with '/') or a full URL is returned as-is.
 export const img = (id, { w = 1200, h, crop, q = 80 } = {}) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}${h ? `&h=${h}` : ''}${crop ? `&crop=${crop}` : ''}&q=${q}`
+  id.startsWith('/') || id.startsWith('http')
+    ? id
+    : `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}${h ? `&h=${h}` : ''}${crop ? `&crop=${crop}` : ''}&q=${q}`
 
 export const CURRENCY = 'AED'
 
@@ -10,7 +13,7 @@ export const collections = [
     name: 'Abayas',
     tagline: 'Fluid silhouettes, engineered drape',
     description: 'Considered abayas cut from fluid, opaque crepe — built for movement, finished with quiet detail.',
-    cover: 'J8HhIB6tKRA',
+    cover: '/public/images/abayas/abaya-1.webp',
     fabric: 'Nida crepe or brushed crepe, fully opaque',
     fit: 'Relaxed, floor-length silhouette with a clean drape',
     care: 'Dry clean only. Steam to release travel creases.',
@@ -79,13 +82,13 @@ export const sizeGuide = [
 
 const raw = [
   // Abayas
-  { name: 'The Sahara Abaya', collection: 'abayas', price: 640, colors: ['Black', 'Espresso'], image: '56fPjVSHM3o', styled: 'MzImhIYa3-I', badge: 'Bestseller',
+  { name: 'The Sahara Abaya', collection: 'abayas', price: 640, colors: ['Navy'], image: '/public/images/abayas/abaya-1.webp', styled: '/public/images/abayas/abaya-2.webp', badge: 'Bestseller',
     description: 'A closed-front abaya cut from fluid nida crepe with a fitted shoulder and a soft, floor-skimming fall. Finished with a self-tie belt to define the waist.' },
-  { name: 'Noor Embroidered Abaya', collection: 'abayas', price: 780, colors: ['Black'], image: 'MzImhIYa3-I', styled: '65v_6djIAFs', badge: 'New',
+  { name: 'Noor Embroidered Abaya', collection: 'abayas', price: 780, colors: ['Espresso'], image: '/public/images/abayas/abaya-2.webp', styled: '/public/images/abayas/abaya-3.webp', badge: 'New',
     description: 'Hand-finished floral embroidery traces the cuffs and front placket of this closed abaya, cut for a clean, considered silhouette.' },
-  { name: 'Layla Open Abaya', collection: 'abayas', price: 690, colors: ['Sand', 'Black'], image: '65v_6djIAFs', styled: 'vrQAE65t7Hg', badge: '',
+  { name: 'Layla Open Abaya', collection: 'abayas', price: 690, colors: ['Espresso'], image: '/public/images/abayas/abaya-3.webp', styled: '/public/images/abayas/abaya-4.webp', badge: '',
     description: 'An open-front abaya designed to layer over your own pieces, with a matching under-scarf and clean topstitched seams.' },
-  { name: 'Amara Closed Abaya', collection: 'abayas', price: 710, colors: ['Taupe', 'Charcoal'], image: 'vrQAE65t7Hg', styled: '2eC_-0yRrGU', badge: '',
+  { name: 'Amara Closed Abaya', collection: 'abayas', price: 710, colors: ['Espresso'], image: '/public/images/abayas/abaya-4.webp', styled: '/public/images/abayas/abaya-5.webp', badge: '',
     description: 'A considered wardrobe staple — brushed crepe with a fitted yoke and gently flared hem for effortless movement.' },
 
   // Workwear
