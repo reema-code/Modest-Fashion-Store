@@ -9,16 +9,6 @@ export const CURRENCY = 'AED'
 
 export const collections = [
   {
-    slug: 'abayas',
-    name: 'Abayas',
-    tagline: 'Fluid silhouettes, engineered drape',
-    description: 'Considered abayas cut from fluid, opaque crepe — built for movement, finished with quiet detail.',
-    cover: '/public/images/abayas/abaya-1.webp',
-    fabric: 'Nida crepe or brushed crepe, fully opaque',
-    fit: 'Relaxed, floor-length silhouette with a clean drape',
-    care: 'Dry clean only. Steam to release travel creases.',
-  },
-  {
     slug: 'workwear',
     name: 'Workwear',
     tagline: 'Tailored for the room you walk into',
@@ -29,44 +19,14 @@ export const collections = [
     care: 'Dry clean recommended. Steam between wears.',
   },
   {
-    slug: 'modest-everyday',
-    name: 'Modest Everyday',
-    tagline: 'Considered basics for daily ease',
-    description: 'Easy, long-sleeve dresses in natural fibres — the pieces you reach for without thinking twice.',
-    cover: 'E7OcA57VTy4',
-    fabric: 'Viscose-linen blend, brushed jersey',
-    fit: 'Relaxed midi and maxi lengths with full coverage sleeves',
-    care: 'Machine wash cold, gentle cycle. Hang to dry.',
-  },
-  {
-    slug: 'sportswear',
-    name: 'Sportswear',
-    tagline: 'Modest performance, engineered to move',
-    description: 'Full-coverage activewear built from breathable performance fabric — designed for the studio, the run, the everyday.',
-    cover: '4MJPRwG2OYY',
-    fabric: 'Recycled performance jersey with four-way stretch',
-    fit: 'Second-skin stretch through the body, full-length coverage',
-    care: 'Machine wash cold. No fabric softener. Line dry.',
-  },
-  {
-    slug: 'occasion',
-    name: 'Occasion',
-    tagline: 'Refined pieces for the moments that matter',
-    description: 'Evening and celebration wear with hand-finished detail — modest coverage, without compromising on refinement.',
-    cover: 'dOB0YdxqmW8',
-    fabric: 'Silk-blend crepe and hand-embellished tulle underlay',
-    fit: 'Fitted through the bodice, fluid through the skirt',
-    care: 'Dry clean only. Store on a padded hanger.',
-  },
-  {
-    slug: 'kaftans',
-    name: 'Kaftans',
-    tagline: 'Resortwear with heritage in its seams',
-    description: 'Loose, breathable kaftans for warm-weather ease — rooted in heritage silhouettes, made for the way you actually live.',
-    cover: 'BGQDXS73ktE',
-    fabric: 'Silk-cotton voile with hand-finished trim',
-    fit: 'Relaxed, oversized silhouette with dropped shoulder',
-    care: 'Hand wash cold or dry clean. Line dry in shade.',
+    slug: 'abayas',
+    name: 'Abaya Dress',
+    tagline: 'Fluid silhouettes, engineered drape',
+    description: 'Considered abayas cut from fluid, opaque crepe — built for movement, finished with quiet detail.',
+    cover: '/public/images/abayas/abaya-1.webp',
+    fabric: 'Nida crepe or brushed crepe, fully opaque',
+    fit: 'Relaxed, floor-length silhouette with a clean drape',
+    care: 'Dry clean only. Steam to release travel creases.',
   },
 ]
 
@@ -109,41 +69,6 @@ const raw = [
   { name: 'Camel Wool Trench', collection: 'workwear', price: 950, colors: ['Camel'], image: '0AKg9Pv7LkI', styled: 'FHGpPsI_ozo', badge: '',
     description: 'A longline wool-blend trench with a self-belt and covered placket — the layer that finishes every workwear look.' },
 
-  // Modest Everyday
-  { name: 'Everyday Midi Dress', collection: 'modest-everyday', price: 460, colors: ['Stone'], image: 'utqfDiyaTA0', styled: 'bCnM5P0gcpY', badge: 'Bestseller',
-    description: 'A long-sleeve midi dress in soft viscose-linen, with a relaxed A-line body built for full-day comfort.' },
-  { name: 'Column Long-Sleeve Dress', collection: 'modest-everyday', price: 480, colors: ['Black', 'Ivory'], image: 'bCnM5P0gcpY', styled: 'bjJu-s5m-Ug', badge: '',
-    description: 'A fluid column dress with a high neckline and full-length sleeve — quietly polished, endlessly wearable.' },
-  { name: 'Street Maxi Dress', collection: 'modest-everyday', price: 510, colors: ['Camel'], image: 'bjJu-s5m-Ug', styled: 'utqfDiyaTA0', badge: '',
-    description: 'A maxi-length dress with a gently gathered waist and covered button placket, made for city days on the move.' },
-  { name: 'Coastal Linen Dress', collection: 'modest-everyday', price: 430, colors: ['Sand'], image: 'gY8hncTY3m0', styled: 'utqfDiyaTA0', badge: 'New',
-    description: 'Breathable linen-blend with long sleeves and a loose, breezy fall — built for warm-weather modest dressing.' },
-
-  // Sportswear
-  { name: 'Performance Long-Sleeve Set', collection: 'sportswear', price: 380, colors: ['Charcoal', 'Sage'], image: 'wERO8HDpEGw', styled: 'sxYPiec2tLE', badge: 'Bestseller',
-    description: 'A full-coverage long-sleeve top and legging set in breathable four-way stretch, built for studio to street.' },
-  { name: 'Studio Legging Set', collection: 'sportswear', price: 340, colors: ['Black'], image: 'sxYPiec2tLE', styled: 'IZy6FqnEE2o', badge: '',
-    description: 'High-waisted performance leggings and a relaxed long-sleeve top with thumbholes for coverage that moves with you.' },
-  { name: 'Sport Hijab & Top', collection: 'sportswear', price: 210, colors: ['Stone', 'Black'], image: 'IZy6FqnEE2o', styled: 'Y64mkDZwIt8', badge: 'New',
-    description: 'A quick-dry sport hijab paired with a breathable long-sleeve performance top, cut for genuine range of motion.' },
-  { name: 'Active Wrap Set', collection: 'sportswear', price: 360, colors: ['Espresso'], image: 'Y64mkDZwIt8', styled: 'wERO8HDpEGw', badge: '',
-    description: 'A wrap-front top and full-length legging in soft-touch performance fabric — modest coverage that keeps pace.' },
-
-  // Occasion
-  { name: 'Bridal Bouquet Gown', collection: 'occasion', price: 1450, colors: ['Ivory'], image: 'dOB0YdxqmW8', styled: 'er4c7HGx4Hs', badge: 'New',
-    description: 'A hand-finished ivory gown in silk-blend crepe with a fitted bodice and softly gathered skirt, built for your most considered day.' },
-  { name: 'Garden Party Dress', collection: 'occasion', price: 720, colors: ['Sand'], image: 'er4c7HGx4Hs', styled: 'r3u-_plEvWw', badge: '',
-    description: 'Long sleeves, a covered neckline, and a fluid floor-length skirt — dressed up without a single compromise.' },
-  { name: 'Evening Portrait Gown', collection: 'occasion', price: 980, colors: ['Black'], image: 'r3u-_plEvWw', styled: 'dOB0YdxqmW8', badge: '',
-    description: 'A structured evening gown with a modest boat neckline and full-length sleeve, finished with a fluid column skirt.' },
-
-  // Kaftans
-  { name: 'Signature Kaftan', collection: 'kaftans', price: 690, colors: ['Black'], image: 'BGQDXS73ktE', styled: '9kbeSfpdjYs', badge: 'Bestseller',
-    description: 'Our signature silhouette in silk-cotton voile — dropped shoulder, wide sleeve, and a relaxed floor-length fall.' },
-  { name: 'Resort Kaftan', collection: 'kaftans', price: 640, colors: ['Ivory'], image: '9kbeSfpdjYs', styled: 'eexbQLqWKZk', badge: '',
-    description: 'A lightweight resort kaftan with hand-finished trim at the neckline, made for warm-weather ease.' },
-  { name: 'Dune Kaftan', collection: 'kaftans', price: 660, colors: ['Ivory', 'Sand'], image: 'eexbQLqWKZk', styled: 'BGQDXS73ktE', badge: 'New',
-    description: 'Soft, sun-washed tones and a breezy, unstructured cut — the kaftan you live in from beach to balcony.' },
 ]
 
 export const products = raw.map((p, i) => {

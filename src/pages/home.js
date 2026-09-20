@@ -89,24 +89,6 @@ export const homePage = () => `
     slug: 'abayas', name: 'abayas',
   })}
 
-  ${featureSection({
-    eyebrow: 'Sportswear',
-    title: 'Modest performance, engineered to move.',
-    body: 'Full-coverage activewear in breathable four-way stretch — built for the studio, the run, and everywhere your day takes you next.',
-    image: img('4MJPRwG2OYY', { w: 1100, h: 1350 }),
-    alt: 'Woman in modest activewear stretching outdoors',
-    slug: 'sportswear', name: 'sportswear',
-  })}
-
-  ${featureSection({
-    eyebrow: 'Occasion &amp; Kaftans',
-    title: 'Refined pieces for the moments that matter.',
-    body: 'From garden celebrations to golden-hour dinners — hand-finished occasion wear and heritage kaftans, cut for warm-weather elegance.',
-    image: img('BGQDXS73ktE', { w: 1100, h: 1350 }),
-    alt: 'Woman in an elegant kaftan', reverse: true,
-    slug: 'occasion', name: 'occasion',
-  })}
-
   <section class="manifesto" id="story" style="--manifesto-image:url('${galleryInteriorImage}')">
     <div class="manifesto-inner">
       <p class="eyebrow">Our philosophy</p>
