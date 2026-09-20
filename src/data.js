@@ -53,7 +53,7 @@ const raw = [
     description: 'A green swirl-print kaftan with a hand-beaded paisley yoke in green and silver, finished with a fringed beadwork trim at the neckline and cuffs.' },
   { name: 'Samar Tie-Dye Beaded Kaftan', collection: 'workwear', price: 540, colors: ['Sunset'], photos: ['/public/images/workwear/workwear-3-front.webp', '/public/images/workwear/workwear-3-cuff.webp', W(3)], views: ['Front', 'Cuff Detail', 'Neckline Detail'], badge: '',
     description: 'A sunset tie-dye kaftan in fluid satin, with a hand-beaded scalloped neckline and matching cuffs finished in crystal trim.' },
-  { name: 'Marina Seahorse Beaded Kaftan', collection: 'workwear', price: 550, colors: ['Turquoise'], photos: [W(4)], views: ['Detail'], badge: 'New',
+  { name: 'Marina Seahorse Beaded Kaftan', collection: 'workwear', price: 550, colors: ['Turquoise'], photos: ['/public/images/workwear/workwear-4-front.webp', '/public/images/workwear/workwear-4-cuff.webp', W(4)], views: ['Front', 'Cuff Detail', 'Neckline Detail'], badge: 'New',
     description: 'A turquoise kaftan in a seahorse and starfish print, with a fully hand-beaded yoke embroidered to match the underwater motif.' },
   { name: 'Nadia Wave Beaded Kaftan', collection: 'workwear', price: 560, colors: ['Sky Blue'], photos: [W(5)], views: ['Detail'], badge: '',
     description: 'A sky-blue swirl-print kaftan with a hand-beaded wave-pattern yoke in silver and pale blue, finished with a fringed hem trim.' },
