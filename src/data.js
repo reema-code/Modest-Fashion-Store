@@ -49,8 +49,8 @@ const raw = [
   // Mokhawar / Workwear
   { name: 'Zahra Palm Print Kaftan', collection: 'workwear', price: 480, colors: ['Teal'], photos: [W(1)], badge: 'New',
     description: 'A vivid teal kaftan in a palm and archway print, finished with hand-beaded embroidery at the neckline and lace-trimmed cuffs.' },
-  { name: 'Layan Paisley Beaded Kaftan', collection: 'workwear', price: 520, colors: ['Emerald'], photos: [W(2)], views: ['Detail'], badge: 'New',
-    description: 'An emerald swirl-print kaftan with a hand-beaded paisley yoke in green and silver, finished with a fringed beadwork trim.' },
+  { name: 'Layan Paisley Beaded Kaftan', collection: 'workwear', price: 520, colors: ['Green'], photos: ['/public/images/workwear/workwear-2-front.webp', '/public/images/workwear/workwear-2-cuff.webp', W(2)], views: ['Front', 'Cuff Detail', 'Neckline Detail'], badge: 'New',
+    description: 'A green swirl-print kaftan with a hand-beaded paisley yoke in green and silver, finished with a fringed beadwork trim at the neckline and cuffs.' },
   { name: 'Samar Tie-Dye Beaded Kaftan', collection: 'workwear', price: 540, colors: ['Sunset'], photos: [W(3)], views: ['Detail'], badge: '',
     description: 'A sunset tie-dye kaftan in fluid satin, with a hand-beaded scalloped neckline and matching cuffs finished in crystal trim.' },
   { name: 'Marina Seahorse Beaded Kaftan', collection: 'workwear', price: 550, colors: ['Turquoise'], photos: [W(4)], views: ['Detail'], badge: 'New',
