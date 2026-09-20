@@ -65,7 +65,7 @@ const raw = [
     description: 'A sunset tie-dye Mokhawar piece in fluid satin, with a hand-beaded scalloped neckline and matching cuffs finished in crystal trim.' },
   { name: 'Marina Seahorse Beaded Mokhawar', collection: 'workwear', price: 550, colors: ['Turquoise'], photos: ['/public/images/workwear/workwear-4-front.webp', '/public/images/workwear/workwear-4-cuff.webp', W(4)], views: ['Front', 'Cuff Detail', 'Neckline Detail'], badge: 'New',
     description: 'A turquoise Mokhawar piece in a seahorse and starfish print, with a fully hand-beaded yoke embroidered to match the underwater motif.' },
-  { name: 'Nadia Wave Beaded Mokhawar', collection: 'workwear', price: 560, colors: ['Sky Blue'], photos: [W(5)], views: ['Detail'], badge: '',
+  { name: 'Nadia Wave Beaded Mokhawar', collection: 'workwear', price: 560, colors: ['Sky Blue'], photos: ['/public/images/workwear/workwear-5-front.webp', '/public/images/workwear/workwear-5-cuff.webp', W(5)], views: ['Front', 'Cuff Detail', 'Neckline Detail'], badge: '',
     description: 'A sky-blue swirl-print Mokhawar piece with a hand-beaded wave-pattern yoke in silver and pale blue, finished with a fringed hem trim.' },
 
   // Abayas
