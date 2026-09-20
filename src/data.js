@@ -49,6 +49,14 @@ const raw = [
   // Mokhawar / Workwear
   { name: 'Zahra Palm Print Kaftan', collection: 'workwear', price: 480, colors: ['Teal'], photos: [W(1)], badge: 'New',
     description: 'A vivid teal kaftan in a palm and archway print, finished with hand-beaded embroidery at the neckline and lace-trimmed cuffs.' },
+  { name: 'Layan Paisley Beaded Kaftan', collection: 'workwear', price: 520, colors: ['Emerald'], photos: [W(2)], views: ['Detail'], badge: 'New',
+    description: 'An emerald swirl-print kaftan with a hand-beaded paisley yoke in green and silver, finished with a fringed beadwork trim.' },
+  { name: 'Samar Tie-Dye Beaded Kaftan', collection: 'workwear', price: 540, colors: ['Sunset'], photos: [W(3)], views: ['Detail'], badge: '',
+    description: 'A sunset tie-dye kaftan in fluid satin, with a hand-beaded scalloped neckline and matching cuffs finished in crystal trim.' },
+  { name: 'Marina Seahorse Beaded Kaftan', collection: 'workwear', price: 550, colors: ['Turquoise'], photos: [W(4)], views: ['Detail'], badge: 'New',
+    description: 'A turquoise kaftan in a seahorse and starfish print, with a fully hand-beaded yoke embroidered to match the underwater motif.' },
+  { name: 'Nadia Wave Beaded Kaftan', collection: 'workwear', price: 560, colors: ['Sky Blue'], photos: [W(5)], views: ['Detail'], badge: '',
+    description: 'A sky-blue swirl-print kaftan with a hand-beaded wave-pattern yoke in silver and pale blue, finished with a fringed hem trim.' },
 
   // Abayas
   { name: 'Elara Navy Jacquard Abaya', collection: 'abayas', price: 720, colors: ['Navy'], photos: [A(1)], badge: 'New',

@@ -8,7 +8,7 @@ export const productPage = (slug) => {
   if (!product) return null
   const collection = collections.find((c) => c.slug === product.collection)
   const related = relatedTo(product)
-  const views = product.images.map((_, i) => VIEWS[i] || `View ${i + 1}`)
+  const views = product.views || product.images.map((_, i) => VIEWS[i] || `View ${i + 1}`)
 
   return `
     <section class="product-detail">
@@ -104,6 +104,7 @@ function swatchColor(name) {
   const map = {
     Black: '#211f1c', Espresso: '#4a3a2f', Sand: '#dcccae', Taupe: '#a9967f', Charcoal: '#3a3a38',
     Ivory: '#f3ede0', Camel: '#b48a5a', Stone: '#c9c0ac', Sage: '#8f9b87', Navy: '#2a3348', Chocolate: '#4a352a', Teal: '#1f6b6b',
+    Emerald: '#1f6b45', Sunset: '#c65a3a', Turquoise: '#1a8fa3', 'Sky Blue': '#5f9fd1',
   }
   return map[name] || '#c9c0ac'
 }
