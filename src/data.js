@@ -28,6 +28,16 @@ export const collections = [
     fit: 'Relaxed, floor-length silhouette with a clean drape',
     care: 'Dry clean only. Steam to release travel creases.',
   },
+  {
+    slug: 'underdress',
+    name: 'Abaya Underdress',
+    tagline: 'The slip dress worn beneath',
+    description: 'Simple, opaque slip dresses made to wear under an abaya or kaftan — quiet layers that finish the look.',
+    cover: '/public/images/abayas/abaya-1.webp',
+    fabric: 'Brushed satin or jersey, fully opaque',
+    fit: 'Relaxed column silhouette, floor length',
+    care: 'Machine wash cold, gentle cycle. Hang to dry.',
+  },
 ]
 
 export const SIZES = ['XS', 'S', 'M', 'L', 'XL']
