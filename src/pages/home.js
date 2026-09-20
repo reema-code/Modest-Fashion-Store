@@ -3,7 +3,8 @@ import { icon, formatPrice } from '../utils.js'
 import { productCard } from './product-card.js'
 
 const byBadge = (badge, n) => products.filter((p) => p.badge === badge).slice(0, n)
-const byCollection = (slug, n) => products.filter((p) => p.collection === slug).slice(0, n)
+// Avoids picking a product already shown elsewhere on the homepage (e.g. the Bestseller).
+const byCollection = (slug, n) => products.filter((p) => p.collection === slug && p.badge !== 'Bestseller').slice(0, n)
 
 const featureSection = (opts) => `
   <section class="feature-split ${opts.reverse ? 'reverse' : ''}" style="--feature-image:url('${opts.image}')">
@@ -76,8 +77,8 @@ export const homePage = () => `
     eyebrow: 'Mokhawar',
     title: 'Printed kaftans, made for everyday.',
     body: 'Vivid prints in fluid, opaque fabric with hand-finished detail — our Mokhawar edit is built for warm days and easy movement.',
-    image: img('/public/images/workwear/workwear-1.webp'),
-    alt: 'Woman in a printed teal kaftan',
+    image: img('/public/images/workwear/workwear-3-cuff.webp'),
+    alt: 'Close-up of beaded cuff embroidery on a printed kaftan',
     slug: 'workwear', name: 'Mokhawar',
   })}
 
