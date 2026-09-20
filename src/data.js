@@ -33,7 +33,7 @@ export const collections = [
     name: 'Abaya Underdress',
     tagline: 'The slip dress worn beneath',
     description: 'Simple, opaque slip dresses made to wear under an abaya or Mokhawar piece — quiet layers that finish the look.',
-    cover: '/public/images/abayas/abaya-6.webp',
+    cover: '/public/images/underdress/underdress-1-front.webp',
     fabric: 'Brushed satin or jersey, fully opaque',
     fit: 'Relaxed column silhouette, floor length',
     care: 'Machine wash cold, gentle cycle. Hang to dry.',
@@ -77,6 +77,12 @@ const raw = [
     description: 'A polka-dot abaya finished with delicate lace trim at the cuffs and scarf edge, cut for a clean, considered silhouette.' },
   { name: 'Elif Pinstripe Lace-Band Abaya', collection: 'abayas', price: 790, colors: ['Espresso'], photos: [A(10)], badge: '',
     description: 'A pinstriped abaya banded with hand-finished lace at the chest, tailored for a considered silhouette with a fluid, floor-length fall.' },
+  { name: 'Yara Black Polka-Dot Lace Abaya', collection: 'abayas', price: 750, colors: ['Black'], photos: ['/public/images/abayas/abaya-black-1.webp', '/public/images/abayas/abaya-black-2.webp'], views: ['Front', 'Side'], badge: 'New',
+    description: 'A black polka-dot abaya finished with delicate lace trim at the cuffs and scarf edge, cut for a clean, considered silhouette.' },
+
+  // Abaya Underdress
+  { name: 'Elle Sleeveless Underdress', collection: 'underdress', price: 260, colors: ['Ivory'], photos: ['/public/images/underdress/underdress-1-front.webp', '/public/images/underdress/underdress-1-detail.webp'], views: ['Front', 'Detail'], badge: 'New',
+    description: 'A simple, opaque A-line slip dress with a round neckline and cap sleeve, cut to layer cleanly under an abaya or Mokhawar piece.' },
 ]
 
 export const VIEWS = ['Front', 'Side', 'Detail', 'Styled']
