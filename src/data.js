@@ -75,8 +75,10 @@ const raw = [
     description: 'A tonal floral-print abaya in fluid chiffon over an opaque lining, with a self-tie waist and a matching floor-length scarf.' },
   { name: 'Amara Polka-Dot Lace Abaya', collection: 'abayas', price: 750, colors: ['Espresso'], photos: [A(4), A(6), A(8), A(9)], badge: 'New',
     description: 'A polka-dot abaya finished with delicate lace trim at the cuffs and scarf edge, cut for a clean, considered silhouette.' },
-  { name: 'Elif Pinstripe Lace-Band Abaya', collection: 'abayas', price: 790, colors: ['Espresso'], photos: [A(10)], badge: '',
+  { name: 'Elif Pinstripe Lace-Band Abaya', collection: 'abayas', price: 790, colors: ['Espresso'], photos: [A(10), '/public/images/abayas/pinstripe-brown-2.webp'], badge: '',
     description: 'A pinstriped abaya banded with hand-finished lace at the chest, tailored for a considered silhouette with a fluid, floor-length fall.' },
+  { name: 'Sara Black Pinstripe Lace-Band Abaya', collection: 'abayas', price: 790, colors: ['Black'], photos: ['/public/images/abayas/pinstripe-black-1.webp', '/public/images/abayas/pinstripe-black-2.webp', '/public/images/abayas/pinstripe-black-3.webp'], views: ['Front', 'Detail', 'Side'], badge: 'New',
+    description: 'A black pinstriped abaya banded with hand-finished lace at the chest, tailored for a considered silhouette with a fluid, floor-length fall.' },
   { name: 'Yara Black Polka-Dot Lace Abaya', collection: 'abayas', price: 750, colors: ['Black'], photos: ['/public/images/abayas/abaya-black-1.webp', '/public/images/abayas/abaya-black-2.webp'], views: ['Front', 'Side'], badge: 'New',
     description: 'A black polka-dot abaya finished with delicate lace trim at the cuffs and scarf edge, cut for a clean, considered silhouette.' },
 
