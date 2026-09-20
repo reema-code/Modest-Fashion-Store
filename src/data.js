@@ -90,6 +90,14 @@ const raw = [
     description: 'An open-front abaya designed to layer over your own pieces, with a matching under-scarf and clean topstitched seams.' },
   { name: 'Amara Closed Abaya', collection: 'abayas', price: 710, colors: ['Espresso'], image: '/public/images/abayas/abaya-4.webp', styled: '/public/images/abayas/abaya-5.webp', badge: '',
     description: 'A considered wardrobe staple — brushed crepe with a fitted yoke and gently flared hem for effortless movement.' },
+  { name: 'Rania Lace-Trim Abaya', collection: 'abayas', price: 750, colors: ['Espresso'], image: '/public/images/abayas/abaya-6.webp', styled: '/public/images/abayas/abaya-7.webp', badge: 'New',
+    description: 'A softly printed abaya finished with delicate lace trim at the cuffs and hem, paired with a matching lace-edged scarf for an elevated everyday look.' },
+  { name: 'Yasmin Floral Abaya', collection: 'abayas', price: 820, colors: ['Chocolate'], image: '/public/images/abayas/abaya-7.webp', styled: '/public/images/abayas/abaya-8.webp', badge: '',
+    description: 'An open-front abaya in a subtle tonal floral print, cut from fluid crepe that layers beautifully over our column dresses.' },
+  { name: 'Sofia Pearl-Trim Abaya', collection: 'abayas', price: 730, colors: ['Espresso'], image: '/public/images/abayas/abaya-8.webp', styled: '/public/images/abayas/abaya-9.webp', badge: '',
+    description: 'A closed abaya in a soft dot print, finished with a delicate pearl-trimmed scarf edge for a considered, polished finish.' },
+  { name: 'Elif Pinstripe Abaya', collection: 'abayas', price: 790, colors: ['Espresso'], image: '/public/images/abayas/abaya-9.webp', styled: '/public/images/abayas/abaya-10.webp', badge: '',
+    description: 'A pinstriped abaya banded with hand-finished lace at the waist, tailored for a considered silhouette with a fluid, floor-length fall.' },
 
   // Workwear
   { name: 'Tailored Blazer Set', collection: 'workwear', price: 890, colors: ['Espresso', 'Black'], image: '0NtHjtlwgvs', styled: 'WjHOXP6xIY4', badge: 'Bestseller',
