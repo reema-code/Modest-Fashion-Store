@@ -9,16 +9,6 @@ export const CURRENCY = 'AED'
 
 export const collections = [
   {
-    slug: 'workwear',
-    name: 'Workwear',
-    tagline: 'Tailored for the room you walk into',
-    description: 'Structured separates in considered neutrals — for the woman building a wardrobe that works as hard as she does.',
-    cover: 'nW4MXHvqut8',
-    fabric: 'Suiting twill and wool-blend gabardine',
-    fit: 'Tailored through the shoulder, wide-leg through the trouser',
-    care: 'Dry clean recommended. Steam between wears.',
-  },
-  {
     slug: 'abayas',
     name: 'Abaya Dress',
     tagline: 'Fluid silhouettes, engineered drape',
@@ -58,17 +48,6 @@ const raw = [
     description: 'A closed abaya in a soft dot print, finished with a delicate pearl-trimmed scarf edge for a considered, polished finish.' },
   { name: 'Elif Pinstripe Abaya', collection: 'abayas', price: 790, colors: ['Espresso'], image: '/public/images/abayas/abaya-9.webp', styled: '/public/images/abayas/abaya-10.webp', badge: '',
     description: 'A pinstriped abaya banded with hand-finished lace at the waist, tailored for a considered silhouette with a fluid, floor-length fall.' },
-
-  // Workwear
-  { name: 'Tailored Blazer Set', collection: 'workwear', price: 890, colors: ['Espresso', 'Black'], image: '0NtHjtlwgvs', styled: 'WjHOXP6xIY4', badge: 'Bestseller',
-    description: 'A single-breasted blazer and matching wide-leg trouser, cut from wool-blend gabardine for a considered, boardroom-ready silhouette.' },
-  { name: 'Charcoal Wide-Leg Suit', collection: 'workwear', price: 860, colors: ['Charcoal'], image: 'WjHOXP6xIY4', styled: '9E7s5oyDmxg', badge: '',
-    description: 'Structured shoulders, a nipped waist, and a fluid wide-leg trouser — this suit carries a room without saying too much.' },
-  { name: 'Wide-Leg Trouser & Shirt Set', collection: 'workwear', price: 620, colors: ['Ivory', 'Black'], image: '9E7s5oyDmxg', styled: '0NtHjtlwgvs', badge: 'New',
-    description: 'A relaxed long-sleeve shirt paired with a high-waisted wide-leg trouser — modest coverage with real movement.' },
-  { name: 'Camel Wool Trench', collection: 'workwear', price: 950, colors: ['Camel'], image: '0AKg9Pv7LkI', styled: 'FHGpPsI_ozo', badge: '',
-    description: 'A longline wool-blend trench with a self-belt and covered placket — the layer that finishes every workwear look.' },
-
 ]
 
 export const products = raw.map((p, i) => {
@@ -96,11 +75,11 @@ export const relatedTo = (product, n = 4) =>
   products.filter((p) => p.collection === product.collection && p.id !== product.id).slice(0, n)
 
 export const testimonials = [
-  { quote: 'The tailoring is unlike anything else I’ve found for modest workwear — it actually fits like it was made for me.', name: 'Fatima R.', location: 'Dubai, UAE', avatar: img('5WtbRAqAvOM', { w: 160, h: 160, crop: 'faces' }) },
-  { quote: 'Serein is the first activewear I’ve worn that gives me full coverage and still lets me train properly.', name: 'Aaliyah K.', location: 'Abu Dhabi, UAE', avatar: img('u7vnK5n7yLA', { w: 160, h: 160, crop: 'faces' }) },
-  { quote: 'The abaya fabric is genuinely beautiful in person — it drapes so much better than anything I’ve bought before.', name: 'Sara M.', location: 'Doha, Qatar', avatar: img('fbUvVn1_ViQ', { w: 160, h: 160, crop: 'faces' }) },
+  { quote: 'The abaya fabric is genuinely beautiful in person — it drapes so much better than anything I’ve bought before.', name: 'Sara M.', location: 'Doha, Qatar' },
+  { quote: 'Every abaya I’ve ordered fits like it was made for me. The embroidery detail is stunning up close.', name: 'Fatima R.', location: 'Dubai, UAE' },
+  { quote: 'Considered, opaque, and beautifully finished — this is the only place I shop for abayas now.', name: 'Aaliyah K.', location: 'Abu Dhabi, UAE' },
 ]
 
-export const heroImage = img('Jbw7IxgA87k', { w: 1900, h: 1500 })
-export const campaignImage = img('D_jlzKg2kDc', { w: 1400, h: 1750 })
-export const galleryInteriorImage = img('_42kwMUmZw0', { w: 1900, h: 1100 })
+export const heroImage = '/public/images/abayas/abaya-9.webp'
+export const campaignImage = '/public/images/abayas/abaya-7.webp'
+export const galleryInteriorImage = '/public/images/abayas/abaya-10.webp'

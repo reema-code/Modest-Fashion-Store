@@ -72,15 +72,6 @@ export const homePage = () => `
   </section>
 
   ${featureSection({
-    eyebrow: 'Workwear',
-    title: 'Tailored for the room you walk into.',
-    body: 'Structured blazers, wide-leg trousers, and covered silhouettes built for the boardroom, the client meeting, and everything after.',
-    image: img('nW4MXHvqut8', { w: 1100, h: 1350 }),
-    alt: 'Woman in tailored modest workwear',
-    slug: 'workwear', name: 'workwear',
-  })}
-
-  ${featureSection({
     eyebrow: 'Abayas',
     title: 'Fluid silhouettes, engineered drape.',
     body: 'Opaque crepe, considered detail, and a fall that moves with intention — our abaya edit is built to be lived in, not just worn.',
@@ -108,7 +99,7 @@ export const homePage = () => `
       ${testimonials.map((t) => `
         <figure class="testimonial-card">
           <blockquote>&ldquo;${t.quote}&rdquo;</blockquote>
-          <figcaption><img src="${t.avatar}" alt="" loading="lazy"><span><b>${t.name}</b>${t.location}</span></figcaption>
+          <figcaption><span class="avatar-initial">${t.name.charAt(0)}</span><span><b>${t.name}</b>${t.location}</span></figcaption>
         </figure>`).join('')}
     </div>
   </section>
