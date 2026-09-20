@@ -44,6 +44,8 @@ function render() {
   const { html, scrollTo } = resolveRoute(location.hash)
   view.innerHTML = html
   qs('[data-nav]')?.classList.remove('show')
+  qs('.menu-toggle')?.setAttribute('aria-expanded', 'false')
+  toggleCart(false)
   initGallery()
   initSizeGuide()
   initSort()
@@ -91,9 +93,8 @@ function initSort() {
     const sorted = cards.slice().sort((a, b) => {
       if (btn.dataset.sortValue === 'price-asc') return priceOf(a) - priceOf(b)
       if (btn.dataset.sortValue === 'price-desc') return priceOf(b) - priceOf(a)
-      return 0
+      return Number(a.dataset.productId) - Number(b.dataset.productId)
     })
-    if (btn.dataset.sortValue === 'default') return
     sorted.forEach((card) => grid.appendChild(card))
   })
 }
@@ -132,6 +133,7 @@ document.addEventListener('click', (e) => {
   if (heart) {
     wishlistStore.toggle(Number(heart.dataset.wish))
     heart.classList.toggle('saved')
+    heart.setAttribute('aria-pressed', String(heart.classList.contains('saved')))
     return
   }
 
@@ -183,7 +185,7 @@ document.addEventListener('click', (e) => {
 document.addEventListener('submit', (e) => {
   if (e.target.matches('[data-newsletter]')) {
     e.preventDefault()
-    e.target.innerHTML = '<p class="thanks">Welcome to Serein. Thank you for joining us.</p>'
+    showToast('Newsletter signup is not available yet.')
   }
 })
 

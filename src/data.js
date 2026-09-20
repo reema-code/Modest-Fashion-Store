@@ -5,7 +5,7 @@ export const img = (id, { w = 1200, h = w, crop } = {}) =>
 
 export const CURRENCY = 'AED'
 
-export const collections = [
+export const allCollections = [
   {
     slug: 'abayas',
     name: 'Abayas',
@@ -66,6 +66,13 @@ export const collections = [
     fit: 'Relaxed, oversized silhouette with dropped shoulder',
     care: 'Hand wash cold or dry clean. Line dry in shade.',
   },
+]
+
+// Launch visibility is centralised; archived collections remain intact for later.
+export const launchSlugs = ['abayas', 'mkhawar']
+export const collections = [
+  { ...allCollections[0], name: 'Abaya', tagline: 'The Abaya edit', description: 'Explore our edit of open and closed abaya silhouettes.' },
+  { slug: 'mkhawar', name: 'Mkhawar', tagline: 'A new chapter', description: 'Our Mkhawar collection is coming soon.', cover: null, comingSoon: true },
 ]
 
 export const SIZES = ['XS', 'S', 'M', 'L', 'XL']
@@ -136,8 +143,8 @@ const raw = [
     description: 'Soft, sun-washed tones and a breezy, unstructured cut — the kaftan you live in from beach to balcony.' },
 ]
 
-export const products = raw.map((p, i) => {
-  const col = collections.find((c) => c.slug === p.collection)
+export const allProducts = raw.map((p, i) => {
+  const col = allCollections.find((c) => c.slug === p.collection)
   return {
     id: i + 1,
     slug: p.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
@@ -154,6 +161,8 @@ export const products = raw.map((p, i) => {
     thumb: img(p.image, { w: 900, h: 1150 }),
   }
 })
+
+export const products = allProducts.filter((p) => launchSlugs.includes(p.collection))
 
 export const findProduct = (slug) => products.find((p) => p.slug === slug)
 export const productsIn = (slug) => products.filter((p) => p.collection === slug)

@@ -1,144 +1,40 @@
-import { collections, products, testimonials, heroImage, campaignImage, galleryInteriorImage, img } from '../data.js'
-import { icon, formatPrice } from '../utils.js'
+import { productsIn, heroImage } from '../data.js'
+import { icon } from '../utils.js'
 import { productCard } from './product-card.js'
 
-const byBadge = (badge, n) => products.filter((p) => p.badge === badge).slice(0, n)
-
-const featureSection = (opts) => `
-  <section class="feature-split ${opts.reverse ? 'reverse' : ''}" style="--feature-image:url('${opts.image}')">
-    <div class="feature-image" role="img" aria-label="${opts.alt}"></div>
-    <div class="feature-copy">
-      <p class="eyebrow">${opts.eyebrow}</p>
-      <h2>${opts.title}</h2>
-      <p>${opts.body}</p>
-      <a class="cta dark" href="#/collections/${opts.slug}">Shop ${opts.name} ${icon('arrow')}</a>
-    </div>
-  </section>`
+export const collectionPanels = () => `
+  <div class="launch-panels">
+    <a class="launch-panel abaya-panel" href="#/collections/abayas">
+      <span class="eyebrow">01 / The collection</span>
+      <div><span class="arabic-label" lang="ar" dir="rtl">عبايات</span><h2>Abaya</h2><p>Ease in every silhouette.</p></div>
+      <span class="text-link">Explore Abaya ${icon('arrow')}</span>
+    </a>
+    <a class="launch-panel mkhawar-panel" href="#/collections/mkhawar">
+      <span class="eyebrow">02 / Coming soon</span>
+      <div><span class="arabic-label" lang="ar" dir="rtl">مخاوير</span><h2>Mkhawar</h2><p>A new chapter in modest dressing.</p></div>
+      <span class="text-link">Discover Mkhawar ${icon('arrow')}</span>
+    </a>
+  </div>`
 
 export const homePage = () => `
-  <section class="hero" id="hero" style="--hero-image:url('${heroImage}')">
-    <div class="hero-copy">
-      <p class="eyebrow">The late summer edit &middot; 2026</p>
-      <h1>Modest,<br><em>by design.</em></h1>
-      <p>Considered silhouettes, natural textures, and quiet confidence — made for the way you move through Dubai and beyond.</p>
-      <a class="cta light" href="#/collections">Explore the collection ${icon('arrow')}</a>
+  <section class="brand-hero" aria-labelledby="hero-title">
+    <div class="brand-hero-copy">
+      <p class="eyebrow">Serein / Abaya &amp; Mkhawar</p>
+      <h1 id="hero-title">A quiet <br>expression <br>of <em>elegance.</em></h1>
+      <p>Modest dressing. Personal expression.<br>A wardrobe that feels like you.</p>
+      <div class="hero-links"><a class="cta dark" href="#/collections/abayas">Explore Abaya ${icon('arrow')}</a><a class="text-link" href="#/collections/mkhawar">Mkhawar · Coming soon</a></div>
+      <span class="hero-signature">THE SEREIN EDIT</span>
     </div>
-    <span class="vertical-note">SEREIN / COLLECTION 04</span>
+    <div class="brand-hero-photo"><img src="${heroImage}" alt="Serein editorial: an embroidered black silhouette" fetchpriority="high" width="950" height="1150"><span>Modest, by design.</span></div>
   </section>
-
-  <section class="marquee" aria-label="Brand values">
-    <div>CONSIDERED SILHOUETTES <i>&#10022;</i> NATURAL FABRICS <i>&#10022;</i> MADE TO LAST <i>&#10022;</i> FULL COVERAGE, NO COMPROMISE <i>&#10022;</i> CONSIDERED SILHOUETTES <i>&#10022;</i> NATURAL FABRICS <i>&#10022;</i> MADE TO LAST <i>&#10022;</i> FULL COVERAGE, NO COMPROMISE</div>
+  <section class="brand-intro"><p class="eyebrow">Two expressions. One point of view.</p><p>The everyday ease of an abaya.<br>The personal beauty of Mkhawar.</p></section>
+  <section class="launch-collections" aria-label="Our collections">${collectionPanels()}</section>
+  <section class="product-section" id="the-edit">
+    <div class="section-head"><div><p class="eyebrow">The Abaya edit</p><h2>Find your silhouette.</h2></div><a href="#/collections/abayas">Explore all Abaya ${icon('arrow')}</a></div>
+    <div class="product-grid featured-grid">${productsIn('abayas').filter(p => p.slug !== 'layla-open-abaya').map(productCard).join('')}</div>
   </section>
-
-  <section class="product-section" id="new">
-    <div class="section-head">
-      <div><p class="eyebrow">Just arrived</p><h2>New arrivals</h2></div>
-      <a href="#/collections">Shop all pieces ${icon('arrow')}</a>
-    </div>
-    <div class="product-grid">${byBadge('New', 4).map(productCard).join('')}</div>
-  </section>
-
-  <section class="collection-grid-section">
-    <div class="section-head center">
-      <p class="eyebrow">Explore</p>
-      <h2>Shop by collection</h2>
-    </div>
-    <div class="collection-grid">
-      ${collections.map((c) => `
-        <a class="collection-tile" href="#/collections/${c.slug}" style="--tile-image:url('${img(c.cover, { w: 900, h: 1150 })}')">
-          <span class="collection-tile-inner">
-            <em>${c.name}</em>
-            <small>Shop now ${icon('arrow')}</small>
-          </span>
-        </a>`).join('')}
-    </div>
-  </section>
-
-  <section class="campaign" style="--campaign-image:url('${campaignImage}')">
-    <div class="campaign-copy">
-      <p class="eyebrow">Collection 04 &middot; Autumn campaign</p>
-      <h2>A quieter kind<br>of confidence.</h2>
-      <p>Photographed between Dubai's contemporary interiors, this season is about fabric that moves the way you do — considered tailoring, natural texture, and coverage that never feels like a compromise.</p>
-      <a class="cta light" href="#/collections">View the campaign ${icon('arrow')}</a>
-    </div>
-  </section>
-
-  <section class="product-section" id="bestsellers">
-    <div class="section-head">
-      <div><p class="eyebrow">Loved by our community</p><h2>Best sellers</h2></div>
-      <a href="#/collections">Shop all pieces ${icon('arrow')}</a>
-    </div>
-    <div class="product-grid">${byBadge('Bestseller', 4).map(productCard).join('')}</div>
-  </section>
-
-  ${featureSection({
-    eyebrow: 'Workwear',
-    title: 'Tailored for the room you walk into.',
-    body: 'Structured blazers, wide-leg trousers, and covered silhouettes built for the boardroom, the client meeting, and everything after.',
-    image: img('nW4MXHvqut8', { w: 1100, h: 1350 }),
-    alt: 'Woman in tailored modest workwear',
-    slug: 'workwear', name: 'workwear',
-  })}
-
-  ${featureSection({
-    eyebrow: 'Abayas',
-    title: 'Fluid silhouettes, engineered drape.',
-    body: 'Opaque crepe, considered detail, and a fall that moves with intention — our abaya edit is built to be lived in, not just worn.',
-    image: img('J8HhIB6tKRA', { w: 1100, h: 1350 }),
-    alt: 'Woman in an elegant black abaya', reverse: true,
-    slug: 'abayas', name: 'abayas',
-  })}
-
-  ${featureSection({
-    eyebrow: 'Sportswear',
-    title: 'Modest performance, engineered to move.',
-    body: 'Full-coverage activewear in breathable four-way stretch — built for the studio, the run, and everywhere your day takes you next.',
-    image: img('4MJPRwG2OYY', { w: 1100, h: 1350 }),
-    alt: 'Woman in modest activewear stretching outdoors',
-    slug: 'sportswear', name: 'sportswear',
-  })}
-
-  ${featureSection({
-    eyebrow: 'Occasion &amp; Kaftans',
-    title: 'Refined pieces for the moments that matter.',
-    body: 'From garden celebrations to golden-hour dinners — hand-finished occasion wear and heritage kaftans, cut for warm-weather elegance.',
-    image: img('BGQDXS73ktE', { w: 1100, h: 1350 }),
-    alt: 'Woman in an elegant kaftan', reverse: true,
-    slug: 'occasion', name: 'occasion',
-  })}
-
-  <section class="manifesto" id="story" style="--manifesto-image:url('${galleryInteriorImage}')">
-    <div class="manifesto-inner">
-      <p class="eyebrow">Our philosophy</p>
-      <h2>Clothing should<br><em>feel like you.</em></h2>
-      <p>We design with intention — balancing coverage, movement, and a refined ease. Each piece is created to live beyond a season and become part of your story.</p>
-      <div class="values">
-        <span>01 <b>Thoughtful coverage</b></span>
-        <span>02 <b>Enduring quality</b></span>
-        <span>03 <b>Conscious choices</b></span>
-      </div>
-    </div>
-  </section>
-
-  <section class="testimonials">
-    <div class="section-head center"><p class="eyebrow">In her words</p><h2>Worn, loved, lived in</h2></div>
-    <div class="testimonial-grid">
-      ${testimonials.map((t) => `
-        <figure class="testimonial-card">
-          <blockquote>&ldquo;${t.quote}&rdquo;</blockquote>
-          <figcaption><img src="${t.avatar}" alt="" loading="lazy"><span><b>${t.name}</b>${t.location}</span></figcaption>
-        </figure>`).join('')}
-    </div>
-  </section>
-
-  <section class="newsletter">
-    <p class="eyebrow">The Serein letter</p>
-    <h2>A quieter kind of inbox.</h2>
-    <p>New collections, thoughtful stories, and a little inspiration — delivered occasionally.</p>
-    <form data-newsletter>
-      <input type="email" required placeholder="Your email address" aria-label="Email address">
-      <button type="submit">Join us ${icon('arrow')}</button>
-    </form>
-    <small>By subscribing, you agree to our privacy policy.</small>
+  <section class="brand-story" id="story">
+    <p class="eyebrow">The Serein point of view</p>
+    <div><h2>Elegance is<br><em>personal.</em></h2><p>Serein begins with a simple idea: modest dressing should leave room for your own expression. Our focus is Abaya and Mkhawar — two ways to make a wardrobe your own.</p><a class="text-link" href="#/collections">Discover the collections ${icon('arrow')}</a></div>
   </section>
 `
