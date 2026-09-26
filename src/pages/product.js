@@ -1,8 +1,8 @@
 import { findProduct, relatedTo, sizeGuide, collections, VIEWS } from '../data.js'
-import { icon, formatPrice } from '../utils.js'
+import { icon, formatPrice, stars, avgRating, escapeHtml, reviewStore } from '../utils.js'
 import { productCard } from './product-card.js'
 import { breadcrumbs } from '../components.js'
-import { t, L } from '../i18n.js'
+import { t, L, isRTL } from '../i18n.js'
 
 export const productPage = (slug) => {
   const product = findProduct(slug)
@@ -11,6 +11,13 @@ export const productPage = (slug) => {
   const related = relatedTo(product)
   const views = (product.views || product.images.map((_, i) => VIEWS[i] || `View ${i + 1}`)).map((v) => t(v))
   const eg = (n) => `${t('e.g.')} ${n}`
+
+  const userReviews = reviewStore.forProduct(product.slug)
+  const seedReviews = product.reviews || []
+  const allReviews = [...userReviews, ...seedReviews].slice().sort((a, b) => new Date(b.date) - new Date(a.date))
+  const rating = avgRating(allReviews)
+  const reviewCount = allReviews.length
+  const formatDate = (iso) => new Date(iso).toLocaleDateString(isRTL() ? 'ar-AE' : 'en-US', { year: 'numeric', month: 'short', day: 'numeric' })
 
   return `
     <section class="product-detail">
@@ -29,6 +36,11 @@ export const productPage = (slug) => {
           <p class="eyebrow">${L(collection.name, collection.nameAr)}</p>
           <h1>${L(product.name, product.nameAr)}</h1>
           <p class="price">${formatPrice(product.price)}</p>
+          ${reviewCount ? `
+          <a class="rating-summary" href="#product-reviews" data-scroll-reviews>
+            ${stars(rating)}
+            <span>${rating.toFixed(1)} · ${reviewCount} ${t(reviewCount === 1 ? 'review' : 'reviews')}</span>
+          </a>` : ''}
 
           <div class="option-group">
             <label>${t('Colour')} — <span data-color-label data-color-value="${product.colors[0]}">${t(product.colors[0])}</span></label>
@@ -96,6 +108,47 @@ export const productPage = (slug) => {
           </div>
         </div>
       </div>
+    </section>
+
+    <section class="product-section reviews-section" id="product-reviews" data-reviews="${product.slug}">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">${t('Customer reviews')}</p>
+          <h2>${t('Reviews')}</h2>
+        </div>
+        <button class="cta outline" type="button" data-toggle-review-form>${t('Write a review')}</button>
+      </div>
+
+      <div class="reviews-overview">
+        ${stars(rating, 'lg')}
+        <p>${reviewCount
+          ? `${rating.toFixed(1)} ${t('out of 5')} · ${t('Based on')} ${reviewCount} ${t(reviewCount === 1 ? 'review' : 'reviews')}`
+          : t('No reviews yet — be the first to write one.')}</p>
+      </div>
+
+      <form class="review-form" data-review-form hidden>
+        <div class="review-form-grid">
+          <label>${t('Your name')}<input type="text" name="name" required placeholder="${eg('Sara M.')}"></label>
+          <label>${t('Rating')}
+            <div class="star-picker" data-star-picker>
+              ${[1, 2, 3, 4, 5].map((n) => `<button type="button" class="star-pick ${n <= 5 ? 'filled' : ''}" data-star="${n}" aria-label="${n} ${t('stars')}">${icon('star')}</button>`).join('')}
+              <input type="hidden" name="rating" data-star-value value="5">
+            </div>
+          </label>
+        </div>
+        <label>${t('Your review')}<textarea name="text" rows="3" required placeholder="${t('Tell us what you think of this piece')}"></textarea></label>
+        <button type="submit" class="cta dark">${t('Submit review')}</button>
+      </form>
+
+      ${allReviews.length ? `<div class="review-list">${allReviews.map((r) => `
+        <article class="review-card">
+          <div class="review-card-head">
+            ${stars(r.rating)}
+            ${r.verified === false ? '' : `<span class="verified-badge">${icon('check')} ${t('Verified purchase')}</span>`}
+          </div>
+          <p class="review-text">${escapeHtml(L(r.text, r.textAr))}</p>
+          <p class="review-meta"><b>${escapeHtml(r.name)}</b>${r.location ? ` — ${escapeHtml(L(r.location, r.locationAr))}` : ''} · ${formatDate(r.date)}</p>
+        </article>`).join('')}</div>` : ''}
     </section>
 
     ${related.length ? `

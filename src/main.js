@@ -1,7 +1,7 @@
 import { announcementBar, header, footer, cartDrawer, cartItemsMarkup } from './components.js'
 import { resolveRoute } from './router.js'
 import { products, findProduct, sizeForHeight } from './data.js'
-import { formatPrice, cartStore, wishlistStore, qs, qsa } from './utils.js'
+import { formatPrice, cartStore, wishlistStore, reviewStore, qs, qsa } from './utils.js'
 import { t, L, applyDir, setLang, getLang } from './i18n.js'
 
 const app = document.querySelector('#app')
@@ -226,12 +226,53 @@ document.addEventListener('click', (e) => {
     showToast(t('This is a demo storefront — checkout is not connected.'))
     return
   }
+
+  const scrollToReviews = e.target.closest('[data-scroll-reviews]')
+  if (scrollToReviews) {
+    e.preventDefault()
+    qs('#product-reviews')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    return
+  }
+
+  const toggleReviewForm = e.target.closest('[data-toggle-review-form]')
+  if (toggleReviewForm) {
+    const form = qs('[data-review-form]')
+    if (form) {
+      form.hidden = !form.hidden
+      if (!form.hidden) form.querySelector('[name="name"]')?.focus()
+    }
+    return
+  }
+
+  const starPick = e.target.closest('[data-star]')
+  if (starPick) {
+    const picker = starPick.closest('[data-star-picker]')
+    const val = Number(starPick.dataset.star)
+    qs('[data-star-value]', picker).value = val
+    qsa('.star-pick', picker).forEach((b) => b.classList.toggle('filled', Number(b.dataset.star) <= val))
+    return
+  }
 })
 
 document.addEventListener('submit', (e) => {
   if (e.target.matches('[data-newsletter]')) {
     e.preventDefault()
     e.target.innerHTML = `<p class="thanks">${t('Welcome to Serein. Thank you for joining us.')}</p>`
+    return
+  }
+
+  if (e.target.matches('[data-review-form]')) {
+    e.preventDefault()
+    const form = e.target
+    const slug = form.closest('[data-reviews]')?.dataset.reviews
+    const name = form.querySelector('[name="name"]').value.trim()
+    const text = form.querySelector('[name="text"]').value.trim()
+    const rating = Number(form.querySelector('[data-star-value]').value) || 5
+    if (!slug || !name || !text) return
+    reviewStore.add(slug, { rating, name, text, date: new Date().toISOString().slice(0, 10), verified: false })
+    render()
+    showToast(t('Thank you for your review!'))
+    requestAnimationFrame(() => qs('#product-reviews')?.scrollIntoView({ behavior: 'smooth', block: 'start' }))
   }
 })
 

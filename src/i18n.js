@@ -140,6 +140,24 @@ const dict = {
   'Complete the look': 'أكملي الإطلالة',
   'You may also like': 'قد يعجبكِ أيضاً',
 
+  // Reviews
+  'Customer reviews': 'آراء العميلات',
+  'Reviews': 'التقييمات',
+  'review': 'تقييم',
+  'reviews': 'تقييمات',
+  'Based on': 'استناداً إلى',
+  'out of 5': 'من 5',
+  'No reviews yet — be the first to write one.': 'لا توجد تقييمات بعد — كوني أول من يكتب تقييماً.',
+  'Write a review': 'اكتبي تقييماً',
+  'Your name': 'اسمكِ',
+  'Rating': 'التقييم',
+  'stars': 'نجوم',
+  'Your review': 'تقييمكِ',
+  'Tell us what you think of this piece': 'أخبرينا برأيكِ في هذه القطعة',
+  'Submit review': 'إرسال التقييم',
+  'Thank you for your review!': 'شكراً لتقييمكِ!',
+  'Verified purchase': 'عملية شراء موثقة',
+
   // Know-your-size modal
   "Enter your height and we'll suggest the best fit from our size guide.": 'أدخلي طولكِ وسنقترح عليكِ المقاس الأنسب من دليل مقاساتنا.',
   'Height (cm)': 'الطول (سم)',

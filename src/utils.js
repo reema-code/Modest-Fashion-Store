@@ -1,5 +1,5 @@
 import { CURRENCY } from './data.js'
-import { isRTL } from './i18n.js'
+import { isRTL, t } from './i18n.js'
 
 export const formatPrice = (n) => isRTL() ? `${n.toLocaleString('en-AE')} د.إ` : `${CURRENCY} ${n.toLocaleString('en-AE')}`
 
@@ -15,10 +15,23 @@ export const icon = (name) => ({
   truck: '<svg viewBox="0 0 24 24"><path d="M3 7h11v9H3z"/><path d="M14 11h4l3 3v2h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17.5" cy="18" r="1.6"/></svg>',
   refresh: '<svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 4v4h-4M6 20v-4h4"/></svg>',
   check: '<svg viewBox="0 0 24 24"><path d="m5 13 4 4 10-10"/></svg>',
+  star: '<svg viewBox="0 0 24 24"><path d="m12 3 2.6 5.6 6.1.7-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6-4.5-4.2 6.1-.7Z"/></svg>',
 }[name] || '')
+
+export const escapeHtml = (s = '') =>
+  String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]))
+
+export const avgRating = (reviews = []) =>
+  reviews.length ? reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length : 0
+
+export const stars = (rating = 0) => {
+  const pct = Math.max(0, Math.min(5, rating)) / 5 * 100
+  return `<span class="stars" style="--rating:${pct}%" role="img" aria-label="${rating.toFixed(1)} ${t('out of 5')}"><span class="stars-bg">★★★★★</span><span class="stars-fg">★★★★★</span></span>`
+}
 
 const CART_KEY = 'serein_cart_v1'
 const WISHLIST_KEY = 'serein_wishlist_v1'
+const REVIEWS_KEY = 'serein_reviews_v1'
 
 const read = (key) => {
   try { return JSON.parse(localStorage.getItem(key)) || [] } catch { return [] }
@@ -54,6 +67,21 @@ export const cartStore = {
   },
   count: () => read(CART_KEY).reduce((s, i) => s + i.qty, 0),
   subtotal: () => read(CART_KEY).reduce((s, i) => s + i.qty * i.price, 0),
+}
+
+export const reviewStore = {
+  all() {
+    try { return JSON.parse(localStorage.getItem(REVIEWS_KEY)) || {} } catch { return {} }
+  },
+  forProduct(slug) {
+    return this.all()[slug] || []
+  },
+  add(slug, review) {
+    const all = this.all()
+    all[slug] = [review, ...(all[slug] || [])]
+    write(REVIEWS_KEY, all)
+    return all[slug]
+  },
 }
 
 export const wishlistStore = {
