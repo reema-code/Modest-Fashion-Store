@@ -271,8 +271,16 @@ ul{margin:0;padding-left:20px}
 .option-group>label span{color:var(--ink);font-weight:600;text-transform:none;letter-spacing:0}
 .option-group-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
 .option-group-head label{margin:0}
+.size-links{display:flex;gap:14px}
 .size-guide-link{font-size:11px;text-decoration:underline;color:var(--ink-soft)}
 .size-guide-link:hover{color:var(--ink)}
+.size-finder-label{display:flex;flex-direction:column;gap:6px;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin:18px 0 14px}
+.size-finder-label input{font:16px var(--sans);padding:12px 14px;border:1px solid var(--line);border-radius:var(--radius);color:var(--ink)}
+.size-finder-btn{width:100%;justify-content:center}
+.size-finder-result{margin-top:18px;padding:24px;background:var(--sand);border-radius:var(--radius);text-align:center}
+.size-finder-result>p{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);margin-bottom:8px}
+.size-finder-result strong{display:block;font:400 44px var(--serif);color:var(--burgundy);margin-bottom:16px}
+.size-finder-result .cta{width:100%;justify-content:center}
 .swatches{display:flex;gap:10px}
 .swatch{width:32px;height:32px;border-radius:50%;background:var(--swatch);border:2px solid transparent;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
 .swatch.active{border-color:var(--ink)}

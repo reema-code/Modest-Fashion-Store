@@ -42,6 +42,15 @@ export const collections = [
 
 export const SIZES = ['52', '54', '56', '58', '60']
 
+// Height-based size finder — matches the reference site's "Know your size" tool.
+export const sizeForHeight = (heightCm) => {
+  if (heightCm < 159) return '52'
+  if (heightCm < 164) return '54'
+  if (heightCm < 169) return '56'
+  if (heightCm < 174) return '58'
+  return '60'
+}
+
 export const sizeGuide = [
   { size: '52', bust: '88–92', waist: '70–74', hip: '96–100' },
   { size: '54', bust: '93–97', waist: '75–79', hip: '101–105' },

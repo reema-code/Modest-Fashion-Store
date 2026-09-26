@@ -1,6 +1,6 @@
 import { announcementBar, header, footer, cartDrawer, cartItemsMarkup } from './components.js'
 import { resolveRoute } from './router.js'
-import { products, findProduct } from './data.js'
+import { products, findProduct, sizeForHeight } from './data.js'
 import { formatPrice, cartStore, wishlistStore, qs, qsa } from './utils.js'
 
 const app = document.querySelector('#app')
@@ -68,13 +68,39 @@ function initGallery() {
 
 function initSizeGuide() {
   const modal = qs('[data-size-guide-modal]')
+  const finderModal = qs('[data-size-finder-modal]')
   const modalOverlay = qs('[data-size-guide-overlay]')
-  if (!modal) return
-  const open = () => { modal.classList.add('open'); modalOverlay.classList.add('open'); modal.setAttribute('aria-hidden', 'false') }
-  const close = () => { modal.classList.remove('open'); modalOverlay.classList.remove('open'); modal.setAttribute('aria-hidden', 'true') }
-  qs('[data-open-size-guide]')?.addEventListener('click', open)
-  qs('[data-close-size-guide]')?.addEventListener('click', close)
-  modalOverlay?.addEventListener('click', close)
+  if (!modal && !finderModal) return
+  const openModal = (m) => { m.classList.add('open'); modalOverlay.classList.add('open'); m.setAttribute('aria-hidden', 'false') }
+  const closeAll = () => {
+    [modal, finderModal].forEach((m) => { m?.classList.remove('open'); m?.setAttribute('aria-hidden', 'true') })
+    modalOverlay.classList.remove('open')
+  }
+  qs('[data-open-size-guide]')?.addEventListener('click', () => openModal(modal))
+  qs('[data-close-size-guide]')?.addEventListener('click', closeAll)
+  modalOverlay?.addEventListener('click', closeAll)
+
+  if (!finderModal) return
+  qs('[data-open-size-finder]')?.addEventListener('click', () => openModal(finderModal))
+  qs('[data-close-size-finder]')?.addEventListener('click', closeAll)
+  qs('[data-find-size]', finderModal).addEventListener('click', () => {
+    const height = Number(qs('[data-finder-height]', finderModal).value)
+    if (!height) return
+    const size = sizeForHeight(height)
+    qs('[data-size-finder-value]', finderModal).textContent = size
+    qs('[data-apply-size]', finderModal).dataset.suggestedSize = size
+    qs('[data-size-finder-result]', finderModal).hidden = false
+  })
+  qs('[data-apply-size]', finderModal).addEventListener('click', () => {
+    const size = qs('[data-apply-size]', finderModal).dataset.suggestedSize
+    qs('[data-size-tab="ready"]')?.click()
+    const btn = qs(`.size-btn[data-size="${size}"]`)
+    if (btn) {
+      qsa('.size-btn').forEach((b) => b.classList.remove('active'))
+      btn.classList.add('active')
+    }
+    closeAll()
+  })
 }
 
 function initSort() {

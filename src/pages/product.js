@@ -39,7 +39,10 @@ export const productPage = (slug) => {
           <div class="option-group">
             <div class="option-group-head">
               <label>Size</label>
-              <button class="size-guide-link" data-open-size-guide>Size guide</button>
+              <div class="size-links">
+                <button class="size-guide-link" data-open-size-guide>Size guide</button>
+                <button class="size-guide-link" data-open-size-finder>Know your size</button>
+              </div>
             </div>
             ${isMokhawar ? `
             <div class="size-tabs" data-size-tabs>
@@ -111,6 +114,21 @@ export const productPage = (slug) => {
           <thead><tr><th>Size</th><th>Bust</th><th>Waist</th><th>Hip</th></tr></thead>
           <tbody>${sizeGuide.map((r) => `<tr><td>${r.size}</td><td>${r.bust}</td><td>${r.waist}</td><td>${r.hip}</td></tr>`).join('')}</tbody>
         </table>
+      </div>
+    </div>
+
+    <div class="modal" data-size-finder-modal aria-hidden="true">
+      <div class="modal-card">
+        <button class="modal-close" data-close-size-finder aria-label="Close size finder">${icon('close')}</button>
+        <h3>Know your size</h3>
+        <p>Enter your height and we'll suggest the best fit from our size guide.</p>
+        <label class="size-finder-label">Height (cm)<input type="number" inputmode="decimal" data-finder-height placeholder="e.g. 170"></label>
+        <button class="cta dark size-finder-btn" data-find-size type="button">Show my size</button>
+        <div class="size-finder-result" data-size-finder-result hidden>
+          <p>Your suggested size</p>
+          <strong data-size-finder-value></strong>
+          <button class="cta outline" data-apply-size type="button">Choose this size</button>
+        </div>
       </div>
     </div>
     <div class="overlay" data-size-guide-overlay></div>
