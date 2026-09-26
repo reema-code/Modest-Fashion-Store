@@ -11,7 +11,7 @@ export const announcementBar = () => `
 export const header = () => `
   <header class="site-header" data-header>
     <button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
-    <a class="logo" href="#/">SEREIN<span>&reg;</span></a>
+    <a class="logo" href="#/">BARIZ<span>&reg;</span></a>
     <nav class="main-nav" data-nav>
       <div class="nav-drop">
         <a href="#/">${t('New in')}</a>
@@ -35,7 +35,7 @@ export const footer = () => `
   <footer class="site-footer">
     <div class="footer-top">
       <div class="footer-brand">
-        <a class="logo" href="#/">SEREIN<span>&reg;</span></a>
+        <a class="logo" href="#/">BARIZ<span>&reg;</span></a>
         <p>${t('Modest, by design. Considered clothing for women who dress with intention — from Dubai to the world.')}</p>
       </div>
       <div class="footer-col">
@@ -50,7 +50,7 @@ export const footer = () => `
         <a href="#/contact">${t('Contact')}</a>
       </div>
       <div class="footer-col newsletter-col">
-        <h4>${t('The Serein letter')}</h4>
+        <h4>${t('The Bariz letter')}</h4>
         <p>${t('New collections and considered stories, delivered occasionally.')}</p>
         <form class="footer-newsletter" data-newsletter>
           <input type="email" required placeholder="${t('Your email address')}" aria-label="${t('Your email address')}">
@@ -59,7 +59,7 @@ export const footer = () => `
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="copyright">&copy; 2026 Serein Studio</p>
+      <p class="copyright">&copy; 2026 Bariz Studio</p>
       <div class="social"><a href="#">Instagram</a><a href="#">Pinterest</a><a href="#">TikTok</a></div>
       <p class="legal">${t('Privacy')} &nbsp; ${t('Terms')}</p>
     </div>

@@ -1,4 +1,4 @@
-const LANG_KEY = 'serein_lang'
+const LANG_KEY = 'bariz_lang'
 
 export const getLang = () => {
   try { return localStorage.getItem(LANG_KEY) || 'en' } catch { return 'en' }
@@ -37,7 +37,7 @@ const dict = {
   'Shipping & returns': 'الشحن والإرجاع',
   'Size guide': 'دليل المقاسات',
   'Contact': 'تواصلي معنا',
-  'The Serein letter': 'نشرة سيرين',
+  'The Bariz letter': 'نشرة بارز',
   'New collections and considered stories, delivered occasionally.': 'مجموعات جديدة وقصص مختارة، تصلكِ بين الحين والآخر.',
   'Your email address': 'بريدكِ الإلكتروني',
   'Privacy': 'الخصوصية',
@@ -53,7 +53,7 @@ const dict = {
   'Your bag is waiting.': 'حقيبتكِ بانتظاركِ.',
   'Explore the collection': 'استكشفي المجموعة',
   'This is a demo storefront — checkout is not connected.': 'هذا متجر تجريبي — الدفع غير مفعّل حالياً.',
-  'Welcome to Serein. Thank you for joining us.': 'أهلاً بكِ في سيرين. شكراً لانضمامكِ إلينا.',
+  'Welcome to Bariz. Thank you for joining us.': 'أهلاً بكِ في بارز. شكراً لانضمامكِ إلينا.',
   'Size': 'المقاس',
   'Custom': 'مقاس مخصص',
 
@@ -174,8 +174,8 @@ const dict = {
 
   // Static: size guide page
   'Fit & measurements': 'المقاس والقياسات',
-  'All Serein pieces are cut for a relaxed, considered fit. Measurements below are in centimetres — taken against the body, not the garment. If you fall between two sizes, we recommend sizing up for an easier drape.':
-    'جميع قطع سيرين مصممة بقصة مريحة ومدروسة. المقاسات أدناه بالسنتيمتر — مأخوذة على الجسم وليس القطعة. إذا كنتِ بين مقاسين، ننصح باختيار المقاس الأكبر لسقطة أسهل.',
+  'All Bariz pieces are cut for a relaxed, considered fit. Measurements below are in centimetres — taken against the body, not the garment. If you fall between two sizes, we recommend sizing up for an easier drape.':
+    'جميع قطع بارز مصممة بقصة مريحة ومدروسة. المقاسات أدناه بالسنتيمتر — مأخوذة على الجسم وليس القطعة. إذا كنتِ بين مقاسين، ننصح باختيار المقاس الأكبر لسقطة أسهل.',
   'Still unsure? Reach out to our styling team at': 'ما زلتِ غير متأكدة؟ تواصلي مع فريق التنسيق لدينا عبر',
   'for a personal fit recommendation.': 'للحصول على توصية مقاس شخصية.',
 

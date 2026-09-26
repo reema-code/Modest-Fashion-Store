@@ -257,7 +257,7 @@ document.addEventListener('click', (e) => {
 document.addEventListener('submit', (e) => {
   if (e.target.matches('[data-newsletter]')) {
     e.preventDefault()
-    e.target.innerHTML = `<p class="thanks">${t('Welcome to Serein. Thank you for joining us.')}</p>`
+    e.target.innerHTML = `<p class="thanks">${t('Welcome to Bariz. Thank you for joining us.')}</p>`
     return
   }
 

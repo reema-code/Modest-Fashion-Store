@@ -35,7 +35,7 @@ export const homePage = () => `
       <p>${t('Considered silhouettes, natural textures, and quiet confidence — made for the way you move through Dubai and beyond.')}</p>
       <a class="cta light" href="#/collections">${t('Explore the collection')} ${icon('arrow')}</a>
     </div>
-    <span class="vertical-note">SEREIN / COLLECTION 04</span>
+    <span class="vertical-note">BARIZ / COLLECTION 04</span>
   </section>
 
   <section class="marquee" aria-label="Brand values">
@@ -126,7 +126,7 @@ export const homePage = () => `
   </section>
 
   <section class="newsletter">
-    <p class="eyebrow">${t('The Serein letter')}</p>
+    <p class="eyebrow">${t('The Bariz letter')}</p>
     <h2>${t('A quieter kind of inbox.')}</h2>
     <p>${t('New collections, thoughtful stories, and a little inspiration — delivered occasionally.')}</p>
     <form data-newsletter>

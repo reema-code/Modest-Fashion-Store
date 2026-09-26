@@ -16,4 +16,4 @@ const server = createServer(async (req, res) => {
   } catch { res.writeHead(404); res.end('Not found') }
 })
 const port = Number(process.env.PORT || 5173)
-server.listen(port, '0.0.0.0', () => console.log(`Serein is ready at http://localhost:${port}`))
+server.listen(port, '0.0.0.0', () => console.log(`Bariz is ready at http://localhost:${port}`))

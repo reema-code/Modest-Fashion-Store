@@ -29,9 +29,9 @@ export const stars = (rating = 0) => {
   return `<span class="stars" style="--rating:${pct}%" role="img" aria-label="${rating.toFixed(1)} ${t('out of 5')}"><span class="stars-bg">★★★★★</span><span class="stars-fg">★★★★★</span></span>`
 }
 
-const CART_KEY = 'serein_cart_v1'
-const WISHLIST_KEY = 'serein_wishlist_v1'
-const REVIEWS_KEY = 'serein_reviews_v1'
+const CART_KEY = 'bariz_cart_v1'
+const WISHLIST_KEY = 'bariz_wishlist_v1'
+const REVIEWS_KEY = 'bariz_reviews_v1'
 
 const read = (key) => {
   try { return JSON.parse(localStorage.getItem(key)) || [] } catch { return [] }

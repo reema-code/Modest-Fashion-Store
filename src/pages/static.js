@@ -10,12 +10,12 @@ export const sizeGuidePage = () => `
     <h1>${t('Size guide')}</h1>
   </section>
   <section class="static-content">
-    <p>${t('All Serein pieces are cut for a relaxed, considered fit. Measurements below are in centimetres — taken against the body, not the garment. If you fall between two sizes, we recommend sizing up for an easier drape.')}</p>
+    <p>${t('All Bariz pieces are cut for a relaxed, considered fit. Measurements below are in centimetres — taken against the body, not the garment. If you fall between two sizes, we recommend sizing up for an easier drape.')}</p>
     <table class="size-table">
       <thead><tr><th>${t('Size')}</th><th>${t('Bust')}</th><th>${t('Waist')}</th><th>${t('Hip')}</th></tr></thead>
       <tbody>${sizeGuide.map((r) => `<tr><td>${r.size}</td><td>${r.bust}</td><td>${r.waist}</td><td>${r.hip}</td></tr>`).join('')}</tbody>
     </table>
-    <p>${t('Still unsure? Reach out to our styling team at')} <a href="mailto:hello@serein.com">hello@serein.com</a> ${t('for a personal fit recommendation.')}</p>
+    <p>${t('Still unsure? Reach out to our styling team at')} <a href="mailto:hello@bariz.com">hello@bariz.com</a> ${t('for a personal fit recommendation.')}</p>
   </section>`
 
 export const shippingReturnsPage = () => `
@@ -34,7 +34,7 @@ export const shippingReturnsPage = () => `
     </ul>
     <h3>${t('Returns')}</h3>
     <p>${t('Unworn, unwashed items with tags attached may be returned within 14 days of delivery for a full refund. Occasion and made-to-order pieces are final sale unless faulty.')}</p>
-    <p>${t('To start a return, email')} <a href="mailto:returns@serein.com">returns@serein.com</a> ${t('with your order number.')}</p>
+    <p>${t('To start a return, email')} <a href="mailto:returns@bariz.com">returns@bariz.com</a> ${t('with your order number.')}</p>
   </section>`
 
 export const contactPage = () => `
@@ -45,6 +45,6 @@ export const contactPage = () => `
   </section>
   <section class="static-content">
     <p>${t('For styling advice, order questions, or anything else — our team typically responds within one business day.')}</p>
-    <p><b>${t('Email')}</b><br><a href="mailto:hello@serein.com">hello@serein.com</a></p>
+    <p><b>${t('Email')}</b><br><a href="mailto:hello@bariz.com">hello@bariz.com</a></p>
     <p><b>${t('Studio')}</b><br>${t('Al Quoz, Dubai, United Arab Emirates')}</p>
   </section>`
