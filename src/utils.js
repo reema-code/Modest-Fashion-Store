@@ -1,11 +1,12 @@
 import { CURRENCY } from './data.js'
+import { isRTL } from './i18n.js'
 
-export const formatPrice = (n) => `${CURRENCY} ${n.toLocaleString('en-AE')}`
+export const formatPrice = (n) => isRTL() ? `${n.toLocaleString('en-AE')} د.إ` : `${CURRENCY} ${n.toLocaleString('en-AE')}`
 
 export const icon = (name) => ({
   search: '<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>',
   bag: '<svg viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>',
-  arrow: '<svg viewBox="0 0 24 24"><path d="M5 12h14M14 7l5 5-5 5"/></svg>',
+  arrow: '<svg class="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14M14 7l5 5-5 5"/></svg>',
   heart: '<svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.7-7.5 1.1-1.1a5.5 5.5 0 0 0 0-7.8Z"/></svg>',
   close: '<svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>',
   chevron: '<svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>',
@@ -29,13 +30,13 @@ const write = (key, value) => {
 export const cartStore = {
   get: () => read(CART_KEY),
   set: (items) => write(CART_KEY, items),
-  add(product, { size, color, notes, qty = 1 } = {}) {
+  add(product, { size, color, notes, isCustom, qty = 1 } = {}) {
     const items = read(CART_KEY)
     const chosenSize = size || product.sizes[2]
     const chosenColor = color || product.colors[0]
     const existing = items.find((i) => i.id === product.id && i.size === chosenSize && i.color === chosenColor)
     if (existing) existing.qty += qty
-    else items.push({ id: product.id, name: product.name, price: product.price, image: product.thumb, slug: product.slug, size: chosenSize, color: chosenColor, notes: notes || '', qty })
+    else items.push({ id: product.id, name: product.name, nameAr: product.nameAr, price: product.price, image: product.thumb, slug: product.slug, size: chosenSize, color: chosenColor, notes: notes || '', isCustom: !!isCustom, qty })
     write(CART_KEY, items)
     return items
   },

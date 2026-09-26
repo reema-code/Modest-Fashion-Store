@@ -2,12 +2,13 @@ import { homePage } from './pages/home.js'
 import { collectionsIndexPage, collectionPage } from './pages/collection.js'
 import { productPage } from './pages/product.js'
 import { sizeGuidePage, shippingReturnsPage, contactPage } from './pages/static.js'
+import { t } from './i18n.js'
 
 const notFound = () => `
   <section class="page-header center">
     <p class="eyebrow">404</p>
-    <h1>We couldn't find that page</h1>
-    <p><a class="cta dark" href="#/">Return home</a></p>
+    <h1>${t("We couldn't find that page")}</h1>
+    <p><a class="cta dark" href="#/">${t('Return home')}</a></p>
   </section>`
 
 export function resolveRoute(hash) {

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap');
 
 /* ---------- Design tokens ---------- */
 :root{
@@ -401,3 +402,23 @@ ul{margin:0;padding-left:20px}
   .collection-tile{aspect-ratio:4/3}
   .gallery-thumbs{grid-template-columns:repeat(3,1fr)}
 }
+
+/* ---------- Language switch ---------- */
+.lang-switch{display:flex;border:1px solid rgba(255,255,255,.35);border-radius:20px;overflow:hidden;margin-inline-end:4px}
+.lang-switch button{padding:7px 12px;font-size:10px;font-weight:600;letter-spacing:.06em;color:#fff;opacity:.6;transition:.2s}
+.lang-switch button.active{opacity:1;background:rgba(255,255,255,.16)}
+
+/* ---------- RTL / Arabic ---------- */
+[dir="rtl"] body{font-family:'Cairo','Manrope',sans-serif}
+[dir="rtl"] h1,[dir="rtl"] h2,[dir="rtl"] h3{font-family:'Cairo','Fraunces',serif;font-weight:600}
+[dir="rtl"] .hero h1 em,[dir="rtl"] .manifesto h2 em,[dir="rtl"] .newsletter h2 em,[dir="rtl"] .collection-hero h1 em,[dir="rtl"] .campaign h2 em{font-style:normal}
+[dir="rtl"] ul{padding-left:0;padding-right:20px}
+[dir="rtl"] .icon-arrow{transform:scaleX(-1)}
+
+[dir="rtl"] .announcement-close{right:auto;left:20px}
+[dir="rtl"] .nav-drop a:after{left:auto;right:0}
+[dir="rtl"] .bag-btn b{right:auto;left:2px}
+[dir="rtl"] .vertical-note{right:auto;left:22px;writing-mode:vertical-lr}
+[dir="rtl"] .modal-close{right:auto;left:18px}
+[dir="rtl"] .cart{right:auto;left:0;transform:translateX(-100%)}
+[dir="rtl"] .cart.open{transform:none}

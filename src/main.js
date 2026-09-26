@@ -2,19 +2,25 @@ import { announcementBar, header, footer, cartDrawer, cartItemsMarkup } from './
 import { resolveRoute } from './router.js'
 import { products, findProduct, sizeForHeight } from './data.js'
 import { formatPrice, cartStore, wishlistStore, qs, qsa } from './utils.js'
+import { t, L, applyDir, setLang, getLang } from './i18n.js'
 
 const app = document.querySelector('#app')
-app.innerHTML = `
-  ${announcementBar()}
-  ${header()}
-  <main id="view"></main>
-  ${footer()}
-  ${cartDrawer()}
-`
+let view, cartPanel, overlay
 
-const view = qs('#view')
-const cartPanel = qs('[data-cart]')
-const overlay = qs('[data-overlay]')
+function boot() {
+  applyDir()
+  app.innerHTML = `
+    ${announcementBar()}
+    ${header()}
+    <main id="view"></main>
+    ${footer()}
+    ${cartDrawer()}
+  `
+  view = qs('#view')
+  cartPanel = qs('[data-cart]')
+  overlay = qs('[data-overlay]')
+  render()
+}
 
 function updateCartUI() {
   const items = cartStore.get()
@@ -126,6 +132,12 @@ function initSort() {
 
 // Global event delegation — survives every re-render since it's bound once on document/app shell.
 document.addEventListener('click', (e) => {
+  const langBtn = e.target.closest('[data-lang]')
+  if (langBtn) {
+    if (langBtn.dataset.lang !== getLang()) { setLang(langBtn.dataset.lang); boot() }
+    return
+  }
+
   const announcementClose = e.target.closest('.announcement-close')
   if (announcementClose) { announcementClose.closest('.announcement').remove(); return }
 
@@ -164,7 +176,7 @@ document.addEventListener('click', (e) => {
   const quick = e.target.closest('[data-quick]')
   if (quick) {
     const product = products.find((p) => p.id === Number(quick.dataset.quick))
-    if (product) { cartStore.add(product); updateCartUI(); showToast(`Added ${product.name} to your bag`) }
+    if (product) { cartStore.add(product); updateCartUI(); showToast(addedMessage(product)) }
     return
   }
 
@@ -174,7 +186,7 @@ document.addEventListener('click', (e) => {
     qsa('.swatch', group).forEach((s) => s.classList.remove('active'))
     colorSwatch.classList.add('active')
     const label = qs('[data-color-label]')
-    if (label) label.textContent = colorSwatch.dataset.color
+    if (label) { label.textContent = t(colorSwatch.dataset.color); label.dataset.colorValue = colorSwatch.dataset.color }
     return
   }
 
@@ -199,7 +211,7 @@ document.addEventListener('click', (e) => {
   const addToBag = e.target.closest('[data-add-to-bag]')
   if (addToBag) {
     const product = productFromPanel(addToBag)
-    if (product) { cartStore.add(product, selectedOptions()); updateCartUI(); showToast(`Added ${product.name} to your bag`); toggleCart(true) }
+    if (product) { cartStore.add(product, selectedOptions()); updateCartUI(); showToast(addedMessage(product)); toggleCart(true) }
     return
   }
 
@@ -211,7 +223,7 @@ document.addEventListener('click', (e) => {
   }
 
   if (e.target.closest('.checkout-btn')) {
-    showToast('This is a demo storefront — checkout is not connected.')
+    showToast(t('This is a demo storefront — checkout is not connected.'))
     return
   }
 })
@@ -219,7 +231,7 @@ document.addEventListener('click', (e) => {
 document.addEventListener('submit', (e) => {
   if (e.target.matches('[data-newsletter]')) {
     e.preventDefault()
-    e.target.innerHTML = '<p class="thanks">Welcome to Serein. Thank you for joining us.</p>'
+    e.target.innerHTML = `<p class="thanks">${t('Welcome to Serein. Thank you for joining us.')}</p>`
   }
 })
 
@@ -228,22 +240,33 @@ function productFromPanel(el) {
   return slug ? findProduct(slug) : null
 }
 
+function addedMessage(product) {
+  return `${t('Added')} ${L(product.name, product.nameAr)} ${t('to your bag')}`
+}
+
+const MEASURE_LABEL = {
+  en: { length: 'L', bust: 'B', shoulder: 'Sh', sleeve: 'Sl' },
+  ar: { length: 'ط', bust: 'ص', shoulder: 'ك', sleeve: 'كم' },
+}
+
 function selectedOptions() {
-  const color = qs('[data-color-label]')?.textContent
+  const colorLabel = qs('[data-color-label]')
+  const color = colorLabel?.dataset.colorValue || colorLabel?.textContent
   const customTab = qs('.size-tab.active[data-size-tab="custom"]')
   if (customTab) {
     const panel = qs('[data-size-panel="custom"]')
     const val = (key) => qs(`[data-measure="${key}"]`, panel)?.value.trim()
+    const labels = MEASURE_LABEL[getLang()] || MEASURE_LABEL.en
     const parts = ['length', 'bust', 'shoulder', 'sleeve']
       .map((key) => ({ key, val: val(key) }))
       .filter((m) => m.val)
-      .map((m) => `${m.key[0].toUpperCase()}${m.val}`)
+      .map((m) => `${labels[m.key]}${m.val}`)
     const notes = val('notes')
-    return { color, size: parts.length ? `Custom (${parts.join(' ')})` : 'Custom', notes }
+    return { color, size: parts.length ? `${t('Custom')} (${parts.join(' ')})` : t('Custom'), notes, isCustom: true }
   }
   const sizeBtn = qs('.size-btn.active')
   return { color, size: sizeBtn?.dataset.size }
 }
 
 window.addEventListener('hashchange', render)
-render()
+boot()
