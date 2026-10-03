@@ -1,4 +1,4 @@
-# Bariz — Modest Fashion Store
+# Mughayir — Modest Fashion Store
 
 A premium, editorial storefront for a contemporary modest-fashion label. Built as a dependency-free vanilla JS single-page app with hash-based routing.
 
