@@ -84,12 +84,12 @@ export const homePage = () => `
   </section>
 
   ${featureSection({
-    eyebrow: 'Mokhawar',
+    eyebrow: L('Mokhawar', 'مخاور'),
     title: t('Printed Mokhawar, made for everyday.'),
     body: t('Vivid prints in fluid, opaque fabric with hand-finished detail — our Mokhawar edit is built for warm days and easy movement.'),
     image: img('/public/images/workwear/workwear-3-cuff.webp'),
-    alt: 'Close-up of beaded cuff embroidery on a printed Mokhawar piece',
-    slug: 'workwear', name: 'Mokhawar',
+    alt: t('Close-up of beaded cuff embroidery on a printed Mokhawar piece'),
+    slug: 'workwear', name: L('Mokhawar', 'مخاور'),
   })}
 
   ${featureSection({
@@ -97,7 +97,7 @@ export const homePage = () => `
     title: t('Fluid silhouettes, engineered drape.'),
     body: t('Opaque crepe, considered detail, and a fall that moves with intention — our abaya edit is built to be lived in, not just worn.'),
     image: img('/public/images/abayas/abaya-5.webp'),
-    alt: 'Woman in an elegant modest abaya', reverse: true,
+    alt: t('Woman in an elegant modest abaya'), reverse: true,
     slug: 'abayas', name: t('abayas'),
   })}
 

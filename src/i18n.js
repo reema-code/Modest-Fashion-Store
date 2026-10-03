@@ -207,6 +207,18 @@ const dict = {
   "We couldn't find that page": 'لم نتمكن من العثور على هذه الصفحة',
   'Return home': 'العودة للرئيسية',
 
+  // Home page feature sections
+  'Printed Mokhawar, made for everyday.': 'مخاور مطبوعة، لكل يوم.',
+  'Vivid prints in fluid, opaque fabric with hand-finished detail — our Mokhawar edit is built for warm days and easy movement.':
+    'طبعات نابضة بالحياة من قماش مرن غير شفاف بلمسات يدوية — تشكيلة المخاور لدينا مصممة للأيام الدافئة وسهولة الحركة.',
+  'Fluid silhouettes, engineered drape.': 'خطوط انسيابية بسقطة مصممة بعناية.',
+  'Opaque crepe, considered detail, and a fall that moves with intention — our abaya edit is built to be lived in, not just worn.':
+    'كريب غير شفاف وتفاصيل مدروسة وسقطة تتحرك بوعي — تشكيلة العبايات لدينا مصممة لتُعاش لا لتُرتدى فقط.',
+
+  // Home page image alt text
+  'Close-up of beaded cuff embroidery on a printed Mokhawar piece': 'لقطة مقربة لتطريز الخرز على كم قطعة مخاور مطبوعة',
+  'Woman in an elegant modest abaya': 'امرأة ترتدي عباية أنيقة ومحتشمة',
+
   // Colours
   'Teal': 'فيروزي',
   'Green': 'أخضر',
