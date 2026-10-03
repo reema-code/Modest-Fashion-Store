@@ -2,6 +2,13 @@ import { collections } from './data.js'
 import { icon, formatPrice, cartStore } from './utils.js'
 import { t, L, isRTL } from './i18n.js'
 
+const logoMark = () => `
+  <a class="logo-mark" href="#/" aria-label="${L('Mughayir', 'مغاير')}">
+    <span class="logo-badge">غ</span>
+    <span class="logo-word ${isRTL() ? 'logo-ar' : ''}">${L('MUGHAYIR', 'مغاير')}</span>
+    <span class="logo-reg">&reg;</span>
+  </a>`
+
 export const announcementBar = () => `
   <div class="announcement">
     <p>${t('Complimentary shipping across the UAE on orders over')} ${formatPrice(300)}</p>
@@ -11,7 +18,7 @@ export const announcementBar = () => `
 export const header = () => `
   <header class="site-header" data-header>
     <button class="menu-toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
-    <a class="logo ${isRTL() ? 'logo-ar' : ''}" href="#/">${L('MUGHAYIR', 'مغاير')}<span>&reg;</span></a>
+    ${logoMark()}
     <nav class="main-nav" data-nav>
       <div class="nav-drop">
         <a href="#/">${t('New in')}</a>
@@ -35,7 +42,7 @@ export const footer = () => `
   <footer class="site-footer">
     <div class="footer-top">
       <div class="footer-brand">
-        <a class="logo ${isRTL() ? 'logo-ar' : ''}" href="#/">${L('MUGHAYIR', 'مغاير')}<span>&reg;</span></a>
+        ${logoMark()}
         <p>${t('Modest, by design. Considered clothing for women who dress with intention — from Dubai to the world.')}</p>
       </div>
       <div class="footer-col">
