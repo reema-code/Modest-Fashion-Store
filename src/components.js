@@ -4,7 +4,7 @@ import { t, L, isRTL } from './i18n.js'
 
 const logoMark = () => `
   <a class="logo-mark" href="#/" aria-label="${L('Mughayir', 'مغاير')}">
-    <span class="logo-badge">غ</span>
+    <span class="logo-badge ${isRTL() ? 'logo-badge-ar' : ''}">${L('M', 'غ')}</span>
     <span class="logo-word ${isRTL() ? 'logo-ar' : ''}">${L('MUGHAYIR', 'مغاير')}</span>
     <span class="logo-reg">&reg;</span>
   </a>`
