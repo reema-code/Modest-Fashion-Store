@@ -204,14 +204,14 @@ const raw = [
   { name: 'Elif Pinstripe Lace-Band Abaya', nameAr: 'إيليف - عباية مقلمة بشريط دانتيل', collection: 'abayas', price: 790,
     colors: ['Espresso', 'Black', 'Olive'],
     photosByColor: {
-      Espresso: [A(10), '/public/images/abayas/pinstripe-brown-2.webp', '/public/images/abayas/pinstripe-brown-3.webp', '/public/images/abayas/pinstripe-brown-4.webp'],
+      Espresso: [A(10), '/public/images/abayas/pinstripe-brown-2.webp', '/public/images/abayas/pinstripe-brown-3.webp', '/public/images/abayas/pinstripe-brown-4.webp', '/public/images/abayas/pinstripe-brown-5.webp', '/public/images/abayas/pinstripe-brown-6.webp'],
       Black: ['/public/images/abayas/pinstripe-black-1.webp', '/public/images/abayas/pinstripe-black-2.webp', '/public/images/abayas/pinstripe-black-3.webp', '/public/images/abayas/pinstripe-black-4.webp'],
-      Olive: ['/public/images/abayas/pinstripe-olive-1.webp'],
+      Olive: ['/public/images/abayas/pinstripe-olive-1.webp', '/public/images/abayas/pinstripe-olive-2.webp', '/public/images/abayas/pinstripe-olive-3.webp'],
     },
     viewsByColor: {
-      Espresso: ['Front', 'Detail', 'Front', 'Styled'],
+      Espresso: ['Front', 'Detail', 'Front', 'Styled', 'Detail', 'Styled'],
       Black: ['Front', 'Detail', 'Side', 'Styled'],
-      Olive: ['Styled'],
+      Olive: ['Styled', 'Front', 'Styled'],
     },
     badge: 'New',
     description: 'A pinstriped abaya banded with hand-finished lace at the chest, tailored for a considered silhouette with a fluid, floor-length fall. Available in espresso, black, and olive.',
