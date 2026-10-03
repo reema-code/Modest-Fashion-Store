@@ -72,6 +72,19 @@ function initGallery() {
   qsa('[data-gallery-thumb]', gallery).forEach((btn) => btn.addEventListener('click', () => show(btn.dataset.galleryThumb)))
 }
 
+function swapGalleryColor(slug, color) {
+  const product = slug && findProduct(slug)
+  const media = product?.colorMedia?.[color]
+  const gallery = qs('[data-gallery]')
+  if (!media || !gallery) return
+  const name = L(product.name, product.nameAr)
+  qs('.gallery-main', gallery).innerHTML = media.images.map((src, i) =>
+    `<img src="${src}" alt="${name} — ${t(media.views[i])}" class="gallery-image ${i === 0 ? 'active' : ''}" data-gallery-image data-index="${i}">`).join('')
+  qs('.gallery-thumbs', gallery).innerHTML = media.images.map((src, i) =>
+    `<button class="gallery-thumb ${i === 0 ? 'active' : ''}" data-gallery-thumb="${i}"><img src="${src}" alt="${t(media.views[i])}">${t(media.views[i])}</button>`).join('')
+  initGallery()
+}
+
 function initSizeGuide() {
   const modal = qs('[data-size-guide-modal]')
   const finderModal = qs('[data-size-finder-modal]')
@@ -187,6 +200,7 @@ document.addEventListener('click', (e) => {
     colorSwatch.classList.add('active')
     const label = qs('[data-color-label]')
     if (label) { label.textContent = t(colorSwatch.dataset.color); label.dataset.colorValue = colorSwatch.dataset.color }
+    swapGalleryColor(group.dataset.productSlug, colorSwatch.dataset.color)
     return
   }
 

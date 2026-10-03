@@ -44,7 +44,7 @@ export const productPage = (slug) => {
 
           <div class="option-group">
             <label>${t('Colour')} — <span data-color-label data-color-value="${product.colors[0]}">${t(product.colors[0])}</span></label>
-            <div class="swatches" data-colors>
+            <div class="swatches" data-colors data-product-slug="${product.slug}">
               ${product.colors.map((c, i) => `<button class="swatch ${i === 0 ? 'active' : ''}" data-color="${c}" style="--swatch:${swatchColor(c)}" aria-label="${t(c)}"></button>`).join('')}
             </div>
           </div>
@@ -191,7 +191,7 @@ function swatchColor(name) {
   const map = {
     Black: '#211f1c', Espresso: '#4a3a2f', Sand: '#dcccae', Taupe: '#a9967f', Charcoal: '#3a3a38',
     Ivory: '#f3ede0', Camel: '#b48a5a', Stone: '#c9c0ac', Sage: '#8f9b87', Navy: '#2a3348', Chocolate: '#4a352a', Teal: '#1f6b6b',
-    Emerald: '#1f6b45', Sunset: '#c65a3a', Turquoise: '#1a8fa3', 'Sky Blue': '#5f9fd1', Green: '#1f7a52',
+    Emerald: '#1f6b45', Sunset: '#c65a3a', Turquoise: '#1a8fa3', 'Sky Blue': '#5f9fd1', Green: '#1f7a52', Olive: '#5c5a3f',
   }
   return map[name] || '#c9c0ac'
 }

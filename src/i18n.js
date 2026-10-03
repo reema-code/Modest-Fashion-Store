@@ -218,6 +218,7 @@ const dict = {
   'Espresso': 'بني غامق',
   'Black': 'أسود',
   'Ivory': 'عاجي',
+  'Olive': 'زيتوني',
 
   // Badges
   'New': 'جديد',

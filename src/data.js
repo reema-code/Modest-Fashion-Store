@@ -201,9 +201,21 @@ const raw = [
         text: 'Fabric quality is nice but the lace at the scarf edge started fraying slightly after a few wears.',
         textAr: 'جودة القماش جيدة لكن دانتيل حافة الوشاح بدأ يتآكل قليلاً بعد عدة مرات ارتداء.' },
     ] },
-  { name: 'Elif Pinstripe Lace-Band Abaya', nameAr: 'إيليف - عباية مقلمة بشريط دانتيل', collection: 'abayas', price: 790, colors: ['Espresso'], photos: [A(10), '/public/images/abayas/pinstripe-brown-2.webp'], badge: '',
-    description: 'A pinstriped abaya banded with hand-finished lace at the chest, tailored for a considered silhouette with a fluid, floor-length fall.',
-    descriptionAr: 'عباية مقلمة بشريط دانتيل مصنوع يدوياً عند الصدر، مصممة بخطوط مدروسة وسقطة انسيابية تصل حتى الأرض.',
+  { name: 'Elif Pinstripe Lace-Band Abaya', nameAr: 'إيليف - عباية مقلمة بشريط دانتيل', collection: 'abayas', price: 790,
+    colors: ['Espresso', 'Black', 'Olive'],
+    photosByColor: {
+      Espresso: [A(10), '/public/images/abayas/pinstripe-brown-2.webp', '/public/images/abayas/pinstripe-brown-3.webp', '/public/images/abayas/pinstripe-brown-4.webp'],
+      Black: ['/public/images/abayas/pinstripe-black-1.webp', '/public/images/abayas/pinstripe-black-2.webp', '/public/images/abayas/pinstripe-black-3.webp', '/public/images/abayas/pinstripe-black-4.webp'],
+      Olive: ['/public/images/abayas/pinstripe-olive-1.webp'],
+    },
+    viewsByColor: {
+      Espresso: ['Front', 'Detail', 'Front', 'Styled'],
+      Black: ['Front', 'Detail', 'Side', 'Styled'],
+      Olive: ['Styled'],
+    },
+    badge: 'New',
+    description: 'A pinstriped abaya banded with hand-finished lace at the chest, tailored for a considered silhouette with a fluid, floor-length fall. Available in espresso, black, and olive.',
+    descriptionAr: 'عباية مقلمة بشريط دانتيل مصنوع يدوياً عند الصدر، مصممة بخطوط مدروسة وسقطة انسيابية تصل حتى الأرض. متوفرة باللون البني والأسود والزيتوني.',
     reviews: [
       { rating: 5, name: 'Deema Q.', location: 'Dubai, UAE', locationAr: 'دبي، الإمارات', date: '2025-05-16',
         text: 'The pinstripe is subtle and sophisticated, and the hand-finished lace band at the chest is beautifully done.',
@@ -214,11 +226,6 @@ const raw = [
       { rating: 4, name: 'Reema W.', location: 'Abu Dhabi, UAE', locationAr: 'أبوظبي، الإمارات', date: '2025-09-13',
         text: "Gorgeous fabric and finish — true to size, though I'd love to see more colour options.",
         textAr: 'قماش وتشطيب رائعان — المقاس مطابق، لكن أتمنى توفر خيارات ألوان أكثر.' },
-    ] },
-  { name: 'Sara Black Pinstripe Lace-Band Abaya', nameAr: 'سارة - عباية سوداء مقلمة بشريط دانتيل', collection: 'abayas', price: 790, colors: ['Black'], photos: ['/public/images/abayas/pinstripe-black-1.webp', '/public/images/abayas/pinstripe-black-2.webp', '/public/images/abayas/pinstripe-black-3.webp'], views: ['Front', 'Detail', 'Side'], badge: 'New',
-    description: 'A black pinstriped abaya banded with hand-finished lace at the chest, tailored for a considered silhouette with a fluid, floor-length fall.',
-    descriptionAr: 'عباية سوداء مقلمة بشريط دانتيل مصنوع يدوياً عند الصدر، مصممة بخطوط مدروسة وسقطة انسيابية تصل حتى الأرض.',
-    reviews: [
       { rating: 5, name: 'Noof X.', location: 'Dubai, UAE', locationAr: 'دبي، الإمارات', date: '2025-08-02',
         text: 'Loved the brown version so much I got this in black — same beautiful lace band and drape, works for every occasion.',
         textAr: 'أحببت النسخة البنية كثيراً فاقتنيت هذه باللون الأسود — نفس شريط الدانتيل الجميل ونفس السقطة الأنيقة، تناسب كل المناسبات.' },
@@ -265,6 +272,18 @@ export const VIEWS = ['Front', 'Side', 'Detail', 'Styled']
 
 export const products = raw.map((p, i) => {
   const col = collections.find((c) => c.slug === p.collection)
+  const photosByColor = p.photosByColor || { [p.colors[0]]: p.photos }
+  const viewsByColor = p.viewsByColor || {}
+  const colorMedia = {}
+  p.colors.forEach((c) => {
+    const photos = photosByColor[c] || []
+    colorMedia[c] = {
+      images: photos.map((src) => img(src, { w: 1100, h: 1400 })),
+      thumb: img(photos[0], { w: 900, h: 1150 }),
+      views: viewsByColor[c] || photos.map((_, idx) => VIEWS[idx] || `View ${idx + 1}`),
+    }
+  })
+  const defaultColor = p.colors[0]
   return {
     id: i + 1,
     slug: p.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
@@ -276,8 +295,9 @@ export const products = raw.map((p, i) => {
     care: col.care,
     careAr: col.careAr,
     sizes: SIZES,
-    images: p.photos.map((src) => img(src, { w: 1100, h: 1400 })),
-    thumb: img(p.photos[0], { w: 900, h: 1150 }),
+    colorMedia,
+    images: colorMedia[defaultColor].images,
+    thumb: colorMedia[defaultColor].thumb,
   }
 })
 
