@@ -43,7 +43,7 @@ export const footer = () => `
     <div class="footer-top">
       <div class="footer-brand">
         ${logoMark()}
-        <p>${t('Modest, by design. Considered clothing for women who dress with intention — from Dubai to the world.')}</p>
+        <p>${t('Modest, by design. Clothing made with intention, for the way you actually live — from Dubai to the world.')}</p>
       </div>
       <div class="footer-col">
         <h4>${t('Shop')}</h4>

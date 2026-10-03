@@ -30,8 +30,8 @@ const dict = {
   'Complimentary shipping across the UAE on orders over': 'شحن مجاني داخل الإمارات للطلبات فوق',
 
   // Footer
-  'Modest, by design. Considered clothing for women who dress with intention — from Dubai to the world.':
-    'التواضع بتصميم مدروس. ملابس لامرأة ترتدي بوعي ونية — من دبي إلى العالم.',
+  'Modest, by design. Clothing made with intention, for the way you actually live — from Dubai to the world.':
+    'التواضع بتصميم مدروس. ملابس صُنعت بنيّة، لتناسب أسلوب حياتكِ الفعلي — من دبي إلى العالم.',
   'Shop': 'تسوقي',
   'Information': 'معلومات',
   'Shipping & returns': 'الشحن والإرجاع',
@@ -61,13 +61,13 @@ const dict = {
   'The late summer edit': 'مجموعة أواخر الصيف',
   'Modest,': 'التواضع،',
   'by design.': 'بتصميم مدروس.',
-  'Considered silhouettes, natural textures, and quiet confidence — made for the way you move through Dubai and beyond.':
-    'خطوط مدروسة وأقمشة طبيعية وثقة هادئة — مصممة لأسلوب حياتكِ في دبي وخارجها.',
+  "Fluid silhouettes and natural fabric, cut with quiet intention — for the way you actually move through your day, in Dubai and beyond.":
+    'خطوط انسيابية وأقمشة طبيعية، مصممة بنيّة هادئة — لتناسب أسلوب يومكِ الفعلي، في دبي وخارجها.',
   'Explore the collection ': 'استكشفي المجموعة',
-  'CONSIDERED SILHOUETTES': 'خطوط مدروسة',
+  'FLUID SILHOUETTES': 'خطوط انسيابية',
   'NATURAL FABRICS': 'أقمشة طبيعية',
-  'MADE TO LAST': 'مصنوعة لتدوم',
-  'FULL COVERAGE, NO COMPROMISE': 'تغطية كاملة دون مساومة',
+  'BUILT TO LAST': 'مصنوعة لتدوم',
+  'FULL COVERAGE, NEVER A COMPROMISE': 'تغطية كاملة، لا مساومة فيها',
   'Just arrived': 'وصل حديثاً',
   'New arrivals': 'وصلنا الجديد',
   'Shop all pieces': 'تسوقي كل القطع',
@@ -75,10 +75,10 @@ const dict = {
   'Shop by collection': 'تسوقي حسب المجموعة',
   'Shop now': 'تسوقي الآن',
   'Collection 04 · Autumn campaign': 'المجموعة 04 · حملة الخريف',
-  'A quieter kind': 'نوع أهدأ',
-  'of confidence.': 'من الثقة.',
-  "Photographed between Dubai's contemporary interiors, this season is about fabric that moves the way you do — considered tailoring, natural texture, and coverage that never feels like a compromise.":
-    'صُوّرت بين ديكورات دبي العصرية، هذا الموسم يدور حول أقمشة تتحرك معكِ — خياطة مدروسة وملمس طبيعي وتغطية لا تشعركِ يوماً بالمساومة.',
+  'Dressed with': 'ترتدين',
+  'intention.': 'بوعي.',
+  "Shot across Dubai's most considered interiors, this season is about fabric that moves the way you do: fluid tailoring, natural texture, and coverage that never once feels like settling.":
+    'صُوّرت هذه المجموعة بين أرقى ديكورات دبي المدروسة، وهذا الموسم يتمحور حول أقمشة تتحرك معكِ: خياطة انسيابية وملمس طبيعي وتغطية لا تشعركِ يوماً بالتنازل.',
   'View the campaign': 'شاهدي الحملة',
   'Loved by our community': 'محبوبة من مجتمعنا',
   'Best sellers': 'الأكثر مبيعاً',
@@ -88,16 +88,16 @@ const dict = {
   'Our philosophy': 'فلسفتنا',
   'Clothing should': 'الملابس يجب أن',
   'feel like you.': 'تشبهكِ.',
-  'We design with intention — balancing coverage, movement, and a refined ease. Each piece is created to live beyond a season and become part of your story.':
-    'نصمم بوعي — نوازن بين التغطية والحركة والراحة الأنيقة. كل قطعة صُممت لتدوم أكثر من موسم وتصبح جزءاً من حكايتكِ.',
+  "We design with intention — balancing coverage, movement, and ease that doesn't try too hard. Each piece is made to outlast a season and become part of how you actually get dressed.":
+    'نصمم بنيّة — نوازن بين التغطية والحركة وراحة لا تحاول إثبات نفسها. كل قطعة صُنعت لتدوم أكثر من موسم وتصبح جزءاً من طريقتكِ الفعلية في ارتداء ملابسكِ.',
   'Thoughtful coverage': 'تغطية مدروسة',
   'Enduring quality': 'جودة تدوم',
   'Conscious choices': 'خيارات واعية',
   'In her words': 'بكلماتها',
   'Worn, loved, lived in': 'ارتُديت، أُحبت، عِيشت',
-  'A quieter kind of inbox.': 'بريد إلكتروني أكثر هدوءاً.',
-  'New collections, thoughtful stories, and a little inspiration — delivered occasionally.':
-    'مجموعات جديدة وقصص هادفة وقليل من الإلهام — تصل بين الحين والآخر.',
+  'An inbox worth opening.': 'بريد إلكتروني يستحق الفتح.',
+  "New collections, a few honest stories, and nothing you didn't ask for — sent occasionally.":
+    'مجموعات جديدة وبضع قصص صادقة، ولا شيء لم تطلبيه — تصل بين الحين والآخر.',
   'Join us': 'انضمي إلينا',
   'By subscribing, you agree to our privacy policy.': 'بالاشتراك، أنتِ توافقين على سياسة الخصوصية الخاصة بنا.',
 
@@ -208,12 +208,12 @@ const dict = {
   'Return home': 'العودة للرئيسية',
 
   // Home page feature sections
-  'Printed Mokhawar, made for everyday.': 'مخاور مطبوعة، لكل يوم.',
-  'Vivid prints in fluid, opaque fabric with hand-finished detail — our Mokhawar edit is built for warm days and easy movement.':
-    'طبعات نابضة بالحياة من قماش مرن غير شفاف بلمسات يدوية — تشكيلة المخاور لدينا مصممة للأيام الدافئة وسهولة الحركة.',
-  'Fluid silhouettes, engineered drape.': 'خطوط انسيابية بسقطة مصممة بعناية.',
-  'Opaque crepe, considered detail, and a fall that moves with intention — our abaya edit is built to be lived in, not just worn.':
-    'كريب غير شفاف وتفاصيل مدروسة وسقطة تتحرك بوعي — تشكيلة العبايات لدينا مصممة لتُعاش لا لتُرتدى فقط.',
+  'Printed Mokhawar, built for your every day.': 'مخاور مطبوعة، مصممة ليومكِ.',
+  'Bold prints on fluid, fully opaque fabric with hand-finished beading — made for warm days, easy movement, and a little extra attention.':
+    'طبعات جريئة على قماش مرن غير شفاف بالكامل مع تطريز يدوي بالخرز — مصممة للأيام الدافئة وسهولة الحركة ولمسة تلفت الأنظار.',
+  'Fluid silhouettes, drape with intention.': 'خطوط انسيابية، سقطة واعية.',
+  'Opaque crepe with quiet detailing and a fall that actually moves — our abaya edit is built to be lived in, not just worn.':
+    'كريب غير شفاف بتفاصيل هادئة وسقطة تتحرك فعلاً — تشكيلة العبايات لدينا مصممة لتُعاش لا لتُرتدى فقط.',
 
   // Home page image alt text
   'Close-up of beaded cuff embroidery on a printed Mokhawar piece': 'لقطة مقربة لتطريز الخرز على كم قطعة مخاور مطبوعة',
