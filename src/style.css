@@ -372,7 +372,9 @@ ul{margin:0;padding-left:20px}
 }
 
 @media(max-width:800px){
-  .site-header{height:76px;padding:0 16px}
+  .site-header{height:76px;padding:0 16px;grid-template-columns:120px auto 120px}
+  .menu-toggle{justify-self:start}
+  .actions{justify-self:end}
   .logo-img{height:58px}
   .logo-text-en{font-size:28px}
   .menu-toggle{display:flex}
@@ -380,7 +382,7 @@ ul{margin:0;padding-left:20px}
   .main-nav.show{transform:none;opacity:1;visibility:visible}
   .nav-drop{flex-direction:column;gap:0;padding:16px 22px 40px;font-size:15px}
   .nav-drop a{padding:16px 0;border-bottom:1px solid var(--line)}
-  .actions button:first-child{display:none}
+  .search-btn,.wishlist-btn{display:none}
   .hero{min-height:600px;height:88vh}
   .hero-copy{padding:0 20px 56px;max-width:100%}
   .hero h1{font-size:52px;margin:20px 0}
