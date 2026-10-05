@@ -4,7 +4,9 @@ import { t, L, isRTL } from './i18n.js'
 
 const logoMark = () => `
   <a class="logo-mark" href="#/" aria-label="${L('Mughayir', 'مغاير')}">
-    <img class="logo-img" src="/public/images/brand/mughayir-mark-ivory.png" alt="${L('Mughayir', 'مغاير')}">
+    ${isRTL()
+      ? `<img class="logo-img" src="/public/images/brand/mughayir-mark-ivory.png" alt="مغاير">`
+      : `<span class="logo-text-en">Mughayir</span>`}
   </a>`
 
 export const announcementBar = () => `
